@@ -1,3 +1,4 @@
+import 'package:bijaktrade/pages/learn_page.dart';
 import 'package:bijaktrade/pages/trade_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +19,7 @@ class _WidgetTreeState extends State<WidgetTree> {
 
   List<Widget> pages = [
     HomePage(),
-    PortfolioPage(),
+    LearnPage(),
     TradePage(),
     CommunityPage(),
     PortfolioPage()
