@@ -1,3 +1,4 @@
+import 'package:bijaktrade/widgets/graph.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/search_field.dart';
@@ -139,22 +140,8 @@ class HomePage extends StatelessWidget {
                 ),
               ],
             ),
-            Card(
-              margin: EdgeInsets.all(20),
-              elevation: 5,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Container(
-                height: 150,
-                width: 340,
-                padding: EdgeInsets.all(16),
-                child: const Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [],
-                ),
-              ),
-            ),
+            SizedBox(height: 10),
+            Graph(),
             const Column(
               children: [
                 Padding(
@@ -215,7 +202,7 @@ class HomePage extends StatelessWidget {
                       alignment: Alignment.bottomRight,
                       child: TextButton(
                         onPressed: null,
-                        child: Text('View More'),
+                        child: Text('View More >'),
                       ),
                     ),
                   ],
@@ -250,86 +237,61 @@ class HomePage extends StatelessWidget {
               ),
               color: Colors.white,
               child: Container(
-                height: 200, // Adjust the height as needed
+                height: 219,
                 width: 340,
-                padding: EdgeInsets.all(16),
                 child: const Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     ListTile(
-                      title: Text(
-                        'Item 1',
-                        style: TextStyle(
-                          fontSize: 18.0,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                        ),
+                      leading: Icon(
+                        Icons.push_pin,
                       ),
-                      subtitle: Text('Subtitle for Item 1'),
-                      // onTap: () {}, // Add your onTap logic here if needed
-                    ),
-                    ListTile(
-                      title: Text(
-                        'Item 2',
-                        style: TextStyle(
-                          fontSize: 18.0,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                        ),
+                      title: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'AAPL ',
+                            style: TextStyle(
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            '36,590.00 ',
+                            style: TextStyle(
+                              fontSize: 14.0,
+                              color: Colors.grey,
+                            ),
+                          ),
+                        ],
                       ),
-                      subtitle: Text('Subtitle for Item 2'),
-                      // onTap: () {}, // Add your onTap logic here if needed
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            const Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(top: 10, left: 20, right: 20),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        'Top Stock',
-                        style: TextStyle(
-                          fontSize: 18.0,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                        ),
+                      subtitle: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Expanded(
+                            child: Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text('Apple Inc '),
+                            ),
+                          ),
+                          SizedBox(width: 8),
+                          Expanded(
+                            child: Align(
+                              alignment: Alignment.center,
+                              child: Text('ICon'),
+                            ),
+                          ),
+                          SizedBox(width: 8),
+                          Expanded(
+                            child: Align(
+                              alignment: Alignment.centerRight,
+                              child: Text('+6.21%',
+                                  style: TextStyle(color: Colors.green)),
+                            ),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
-                )
-              ],
-            ),
-            Card(
-              margin: EdgeInsets.all(20),
-              elevation: 5,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20),
-              ),
-              color: Colors.white,
-              child: Container(
-                height: 200, // Adjust the height as needed
-                width: 340,
-
-                child: const Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    ListTile(
-                      leading: Icon(Icons.push_pin),
-                      title: Text(
-                        'AAPL',
-                        style: TextStyle(
-                          fontSize: 18.0,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      subtitle: Text('Apple.Inc'),
-                      // onTap: () {}, // Add your onTap logic here if needed
+                      onTap: null,
                     ),
                     ListTile(
                       leading: Icon(
@@ -363,18 +325,266 @@ class HomePage extends StatelessWidget {
                               child: Text('KELINGTON '),
                             ),
                           ),
-                          SizedBox(width: 8), // Add space between the lines
+                          SizedBox(width: 8),
                           Expanded(
                             child: Align(
-                              alignment: Alignment.centerRight,
+                              alignment: Alignment.center,
                               child: Text('ICon'),
                             ),
                           ),
-                          SizedBox(width: 8), // Add space between the lines
+                          SizedBox(width: 8),
                           Expanded(
                             child: Align(
                               alignment: Alignment.centerRight,
-                              child: Text('+6.21%'),
+                              child: Text(
+                                '+6.21%',
+                                style: TextStyle(color: Colors.green),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      onTap: null,
+                      // Add other properties as needed
+                    ),
+                    ListTile(
+                      leading: Icon(
+                        Icons.push_pin,
+                      ),
+                      title: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'KLSE ',
+                            style: TextStyle(
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            '36,590.00 ',
+                            style: TextStyle(
+                              fontSize: 14.0,
+                              color: Colors.grey,
+                            ),
+                          ),
+                        ],
+                      ),
+                      subtitle: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Expanded(
+                            child: Align(
+                              alignment: Alignment.centerRight,
+                              child: Text('FTE Bursa.. '),
+                            ),
+                          ),
+                          SizedBox(width: 8),
+                          Expanded(
+                            child: Align(
+                              alignment: Alignment.center,
+                              child: Text('ICon'),
+                            ),
+                          ),
+                          SizedBox(width: 8),
+                          Expanded(
+                            child: Align(
+                              alignment: Alignment.centerRight,
+                              child: Text('+6.21%',
+                                  style: TextStyle(color: Colors.red)),
+                            ),
+                          ),
+                        ],
+                      ),
+                      onTap: null,
+                      // Add other properties as needed
+                    )
+                  ],
+                ),
+              ),
+            ),
+            const Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(top: 10, left: 20, right: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Top Stock',
+                        style: TextStyle(
+                          fontSize: 18.0,
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
+            Card(
+              margin: EdgeInsets.all(20),
+              elevation: 5,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+              color: Colors.white,
+              child: Container(
+                height: 219,
+                width: 340,
+                child: const Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ListTile(
+                      leading: Icon(
+                        Icons.keyboard_double_arrow_up,
+                        color: Colors.green,
+                      ),
+                      title: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'AAPL ',
+                            style: TextStyle(
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            '36,590.00 ',
+                            style: TextStyle(
+                              fontSize: 14.0,
+                              color: Colors.grey,
+                            ),
+                          ),
+                        ],
+                      ),
+                      subtitle: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Expanded(
+                            child: Align(
+                              alignment: Alignment.centerLeft,
+                              child: Text('Apple Inc '),
+                            ),
+                          ),
+                          SizedBox(width: 8),
+                          Expanded(
+                            child: Align(
+                              alignment: Alignment.center,
+                              child: Text('ICon'),
+                            ),
+                          ),
+                          SizedBox(width: 8),
+                          Expanded(
+                            child: Align(
+                              alignment: Alignment.centerRight,
+                              child: Text('+6.21%',
+                                  style: TextStyle(color: Colors.green)),
+                            ),
+                          ),
+                        ],
+                      ),
+                      onTap: null,
+                    ),
+                    ListTile(
+                      leading: Icon(
+                        Icons.keyboard_double_arrow_up,
+                        color: Colors.green,
+                      ),
+                      title: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'KELG ',
+                            style: TextStyle(
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            '36,590.00 ',
+                            style: TextStyle(
+                              fontSize: 14.0,
+                              color: Colors.grey,
+                            ),
+                          ),
+                        ],
+                      ),
+                      subtitle: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Expanded(
+                            child: Align(
+                              alignment: Alignment.centerRight,
+                              child: Text('KELINGTON '),
+                            ),
+                          ),
+                          SizedBox(width: 8),
+                          Expanded(
+                            child: Align(
+                              alignment: Alignment.center,
+                              child: Text('ICon'),
+                            ),
+                          ),
+                          SizedBox(width: 8),
+                          Expanded(
+                            child: Align(
+                              alignment: Alignment.centerRight,
+                              child: Text('+6.21%',
+                                  style: TextStyle(color: Colors.green)),
+                            ),
+                          ),
+                        ],
+                      ),
+                      onTap: null,
+                      // Add other properties as needed
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.keyboard_double_arrow_down,
+                          color: Colors.red),
+                      title: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'KLSE ',
+                            style: TextStyle(
+                              fontSize: 18.0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            '36,590.00 ',
+                            style: TextStyle(
+                              fontSize: 14.0,
+                              color: Colors.grey,
+                            ),
+                          ),
+                        ],
+                      ),
+                      subtitle: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Expanded(
+                            child: Align(
+                              alignment: Alignment.centerRight,
+                              child: Text('FTE Bursa.. '),
+                            ),
+                          ),
+                          SizedBox(width: 8),
+                          Expanded(
+                            child: Align(
+                              alignment: Alignment.center,
+                              child: Text('ICon'),
+                            ),
+                          ),
+                          SizedBox(width: 8),
+                          Expanded(
+                            child: Align(
+                              alignment: Alignment.centerRight,
+                              child: Text('+6.21%',
+                                  style: TextStyle(color: Colors.red)),
                             ),
                           ),
                         ],
