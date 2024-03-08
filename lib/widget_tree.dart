@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:learn/pages/community_page.dart';
-import 'package:learn/pages/homepage.dart';
-import 'package:learn/pages/portfolio_page.dart';
+
+import 'pages/community_page.dart';
+import 'pages/homepage.dart';
+import 'pages/portfolio_page.dart';
 
 class WidgetTree extends StatefulWidget {
   const WidgetTree({super.key});

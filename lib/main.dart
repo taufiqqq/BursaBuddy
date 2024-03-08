@@ -1,5 +1,5 @@
+import 'package:bijaktrade/widget_tree.dart';
 import 'package:flutter/material.dart';
-import 'package:learn/widget_tree.dart';
 
 void main() {
   runApp(const MyApp());

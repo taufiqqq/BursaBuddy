@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:learn/widgets/search_field.dart';
+
+import '../widgets/search_field.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key});
