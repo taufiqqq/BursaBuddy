@@ -1,3 +1,5 @@
+import 'package:bijaktrade/pages/trade_page.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'pages/community_page.dart';
@@ -17,7 +19,9 @@ class _WidgetTreeState extends State<WidgetTree> {
   List<Widget> pages = [
     HomePage(),
     PortfolioPage(),
+    TradePage(),
     CommunityPage(),
+    PortfolioPage()
   ];
 
   @override
@@ -29,7 +33,13 @@ class _WidgetTreeState extends State<WidgetTree> {
             Icons.show_chart_sharp,
             color: Colors.white,
           ),
-          onPressed: () {},
+          onPressed: () {
+            // Navigate to the Trade page
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => TradePage()),
+            );
+          },
           shape: const CircleBorder(),
           backgroundColor: Color(0xFF234891)),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -43,6 +53,10 @@ class _WidgetTreeState extends State<WidgetTree> {
             icon: Icon(Icons.book),
             label: 'Learn',
           ),
+          SizedBox(
+              child: Padding(
+                  padding: EdgeInsets.only(top: 35),
+                  child: Center(child: Text("Trade")))),
           NavigationDestination(
             icon: Icon(Icons.groups),
             label: 'Community',
