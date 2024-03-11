@@ -194,6 +194,30 @@ class LearnPage extends StatelessWidget {
                 ],
               ),
             ),
+            const Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(top: 10, left: 20, right: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Beginner',
+                        style: TextStyle(
+                          fontSize: 17.0,
+                          color: Colors.black,
+                        ),
+                      ),
+                      Icon(
+                        Icons.arrow_forward_sharp,
+                        color: Colors.black,
+                        size: 36.0,
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
       ),
