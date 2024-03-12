@@ -1,3 +1,4 @@
+import 'package:bijaktrade/widgets/learn_card.dart';
 import 'package:flutter/material.dart';
 
 class LearnPage extends StatelessWidget {
@@ -219,170 +220,78 @@ class LearnPage extends StatelessWidget {
               ],
             ),
             SizedBox(height: 10),
-            SingleChildScrollView(
+            const SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(vertical: 15, horizontal: 5),
+                padding: EdgeInsets.symmetric(vertical: 15, horizontal: 5),
                 child: Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 5,
-                      ),
-                      child: Container(
-                        width: 200,
-                        height: 150,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              spreadRadius: 3,
-                              blurRadius: 10,
-                              offset: Offset(0, 3),
-                            ),
-                          ],
-                        ),
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 10),
-                          child: Stack(
-                            children: [
-                              Positioned(
-                                left: 10,
-                                bottom: 10,
-                                child: Container(
-                                  width: 100,
-                                  height: 100,
-                                  decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                      fit: BoxFit.cover,
-                                      image: AssetImage(
-                                          'assets/images/learn1.png'),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              Positioned(
-                                top: 5,
-                                right: 5,
-                                child: Container(
-                                  padding: EdgeInsets.all(5),
-                                  child: Text(
-                                    'Basic Stuff',
-                                    style: TextStyle(
-                                      color: Colors.black,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
+                  children: [LearnCard(), LearnCard(), LearnCard()],
+                ),
+              ),
+            ),
+            const Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(top: 10, left: 20, right: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Intermediate',
+                        style: TextStyle(
+                          fontSize: 17.0,
+                          color: Colors.black,
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 5,
+                      Icon(
+                        Icons.arrow_forward_sharp,
+                        color: Colors.black,
+                        size: 36.0,
                       ),
-                      child: Container(
-                        width: 200,
-                        height: 150,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              spreadRadius: 3,
-                              blurRadius: 10,
-                              offset: Offset(0, 3),
-                            ),
-                          ],
-                        ),
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 10),
-                          child: Column(
-                            children: [
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              Container(
-                                alignment: Alignment.center,
-                                child: CircleAvatar(
-                                  //backgroundImage: AssetImage(box.imagePath),
-                                  radius: 50,
-                                ),
-                              ),
-                              Text(
-                                'box.title',
-                                style: const TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              const SizedBox(height: 5),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [],
-                              ),
-                            ],
-                          ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            const SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 15, horizontal: 5),
+                child: Row(
+                  children: [LearnCard(), LearnCard(), LearnCard()],
+                ),
+              ),
+            ),
+            const Column(
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(top: 10, left: 20, right: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Advanced',
+                        style: TextStyle(
+                          fontSize: 17.0,
+                          color: Colors.black,
                         ),
                       ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 5,
+                      Icon(
+                        Icons.arrow_forward_sharp,
+                        color: Colors.black,
+                        size: 36.0,
                       ),
-                      child: Container(
-                        width: 200,
-                        height: 150,
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(10),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              spreadRadius: 3,
-                              blurRadius: 10,
-                              offset: Offset(0, 3),
-                            ),
-                          ],
-                        ),
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 10),
-                          child: Column(
-                            children: [
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              Container(
-                                alignment: Alignment.center,
-                                child: CircleAvatar(
-                                  //backgroundImage: AssetImage(box.imagePath),
-                                  radius: 50,
-                                ),
-                              ),
-                              Text(
-                                'box.title',
-                                style: const TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              const SizedBox(height: 5),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [],
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
+                ),
+              ],
+            ),
+            const SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 15, horizontal: 5),
+                child: Row(
+                  children: [LearnCard(), LearnCard(), LearnCard()],
                 ),
               ),
             ),
