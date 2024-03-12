@@ -27,7 +27,7 @@ class LearnPage extends StatelessWidget {
               ),
               child: Column(
                 children: [
-                  Row(
+                  const Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -47,7 +47,7 @@ class LearnPage extends StatelessWidget {
                     ],
                   ),
                   SizedBox(height: 10),
-                  Row(
+                  const Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Column(
@@ -85,7 +85,7 @@ class LearnPage extends StatelessWidget {
                               )
                             ],
                           ),
-                          child: Column(
+                          child: const Column(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -124,7 +124,7 @@ class LearnPage extends StatelessWidget {
                               )
                             ],
                           ),
-                          child: Column(
+                          child: const Column(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -163,7 +163,7 @@ class LearnPage extends StatelessWidget {
                               )
                             ],
                           ),
-                          child: Column(
+                          child: const Column(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -247,29 +247,35 @@ class LearnPage extends StatelessWidget {
                         ),
                         child: Padding(
                           padding: EdgeInsets.symmetric(horizontal: 10),
-                          child: Column(
+                          child: Stack(
                             children: [
-                              const SizedBox(
-                                height: 10,
-                              ),
-                              Container(
-                                alignment: Alignment.center,
-                                child: CircleAvatar(
-                                  //backgroundImage: AssetImage(box.imagePath),
-                                  radius: 50,
+                              Positioned(
+                                left: 10,
+                                bottom: 10,
+                                child: Container(
+                                  width: 100,
+                                  height: 100,
+                                  decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                      fit: BoxFit.cover,
+                                      image: AssetImage(
+                                          'assets/images/learn1.png'),
+                                    ),
+                                  ),
                                 ),
                               ),
-                              Text(
-                                'box.title',
-                                style: const TextStyle(
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.bold,
+                              Positioned(
+                                top: 5,
+                                right: 5,
+                                child: Container(
+                                  padding: EdgeInsets.all(5),
+                                  child: Text(
+                                    'Basic Stuff',
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                    ),
+                                  ),
                                 ),
-                              ),
-                              const SizedBox(height: 5),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [],
                               ),
                             ],
                           ),
