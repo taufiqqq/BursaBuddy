@@ -14,20 +14,15 @@ class HomePage extends StatelessWidget {
           children: [
             Container(
               padding: const EdgeInsets.only(top: 50, left: 20, right: 20),
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(70),
-                  bottomRight: Radius.circular(60),
-                ),
-                gradient: LinearGradient(
-                  colors: [
-                    Color(0xFF00002136),
-                    Color(0xFF104A57),
-                  ],
-                  begin: Alignment.bottomCenter,
-                  end: Alignment.center,
-                ),
-              ),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(70),
+                    bottomRight: Radius.circular(60),
+                  ),
+                  image: DecorationImage(
+                      image: AssetImage('assets/images/bg.png'),
+                      fit: BoxFit.fitWidth,
+                      alignment: Alignment.topCenter)),
               child: Column(
                 children: [
                   const Row(

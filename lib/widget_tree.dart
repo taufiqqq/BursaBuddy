@@ -1,5 +1,5 @@
 import 'package:bijaktrade/pages/learn_page.dart';
-import 'package:bijaktrade/pages/trade_page.dart';
+import 'package:bijaktrade/pages/stocklist_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -20,7 +20,7 @@ class _WidgetTreeState extends State<WidgetTree> {
   List<Widget> pages = [
     HomePage(),
     LearnPage(),
-    TradePage(),
+    StockListPage(),
     CommunityPage(),
     PortfolioPage()
   ];
@@ -38,7 +38,7 @@ class _WidgetTreeState extends State<WidgetTree> {
             // Navigate to the Trade page
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => TradePage()),
+              MaterialPageRoute(builder: (context) => StockListPage()),
             );
           },
           shape: const CircleBorder(),
