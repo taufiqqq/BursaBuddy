@@ -17,6 +17,8 @@ class StockPage extends StatefulWidget {
 
 class _StockPageState extends State<StockPage> {
   late TrackballBehavior trackballBehavior;
+  int unit = 0;
+  double totalPrice = 0;
   @override
   void initState() {
     getChart();
@@ -30,115 +32,554 @@ class _StockPageState extends State<StockPage> {
     double myHeight = MediaQuery.of(context).size.height;
     double myWidth = MediaQuery.of(context).size.width;
 
-    return SafeArea(
-        child: Scaffold(
-            body: Container(
-      child: Column(
-        children: [
-          Container(
-            height: myHeight * 0.4,
-            width: myWidth,
-            // color: Colors.amber,
-            child: isRefresh == true
-                ? Center(
-                    child: CircularProgressIndicator(
-                      color: Color(0xffFBC700),
-                    ),
-                  )
-                : itemChart == null
-                    ? Padding(
-                        padding: EdgeInsets.all(myHeight * 0.06),
-                        child: Center(
-                          child: Text(
-                            'Attention this Api is free, so you cannot send multiple requests per second, please wait and try again later.',
-                            style: TextStyle(fontSize: 18),
-                          ),
+    return Scaffold(
+        body: Stack(
+      children: [
+        Container(
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(70),
+                bottomRight: Radius.circular(60),
+              ),
+              image: DecorationImage(
+                  image: AssetImage('assets/images/bg.png'),
+                  fit: BoxFit.fitWidth,
+                  alignment: Alignment.topCenter)),
+          child: SafeArea(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Container(
+                  child: Column(
+                    children: [
+                      Container(
+                        padding:
+                            const EdgeInsets.only(top: 20, left: 20, right: 20),
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    GestureDetector(
+                                      child: Icon(Icons.arrow_back_rounded,
+                                          color: Colors.white),
+                                      onTap: () {
+                                        Navigator.pop(context);
+                                      },
+                                    )
+                                  ],
+                                ),
+                                Text(
+                                  "Trading",
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 20,
+                                  ),
+                                ),
+                                Icon(
+                                  Icons.notifications_outlined,
+                                  size: 35.0,
+                                  color: Colors.white,
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
-                      )
-                    : SfCartesianChart(
-                        trackballBehavior: trackballBehavior,
-                        zoomPanBehavior: ZoomPanBehavior(
-                            enablePinching: true, zoomMode: ZoomMode.x),
-                        series: <CandleSeries>[
-                          CandleSeries<ChartModel, int>(
-                              enableSolidCandles: true,
-                              enableTooltip: true,
-                              bullColor: Colors.green,
-                              bearColor: Colors.red,
-                              dataSource: itemChart!,
-                              xValueMapper: (ChartModel sales, _) => sales.time,
-                              lowValueMapper: (ChartModel sales, _) =>
-                                  sales.low,
-                              highValueMapper: (ChartModel sales, _) =>
-                                  sales.high,
-                              openValueMapper: (ChartModel sales, _) =>
-                                  sales.open,
-                              closeValueMapper: (ChartModel sales, _) =>
-                                  sales.close,
-                              animationDuration: 55)
+                      ),
+                      Container(
+                        padding: EdgeInsets.only(top: 8),
+                        width: myWidth * 0.8,
+                        alignment: Alignment.centerLeft,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(widget.selectStock.name,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 30,
+                                    color: Colors.white)),
+                            Text(widget.selectStock.fullName,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.normal,
+                                    fontSize: 15,
+                                    color: Colors.white)),
+                            SizedBox(height: 12),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                    "RM${widget.selectStock.cm.currentPrice.toString()}",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 30,
+                                        color: Colors.white)),
+                                Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Text(
+                                      widget.selectStock.cm
+                                              .marketCapChangePercentage24H
+                                              .toStringAsFixed(2) +
+                                          '%',
+                                      style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold,
+                                        color: widget.selectStock.cm
+                                                    .marketCapChangePercentage24H >=
+                                                0
+                                            ? Colors.green
+                                            : Colors.red,
+                                      ),
+                                    ),
+                                    Icon(
+                                        size: 40,
+                                        widget.selectStock.cm
+                                                    .marketCapChangePercentage24H >=
+                                                0
+                                            ? Icons.arrow_drop_up
+                                            : Icons.arrow_drop_down,
+                                        color: widget.selectStock.cm
+                                                    .marketCapChangePercentage24H >=
+                                                0
+                                            ? Colors.green
+                                            : Colors.red)
+                                  ],
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 10),
+                            Text("KLSE.RM",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.normal,
+                                    fontSize: 15,
+                                    color: Colors.white)),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 15),
+                    ],
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(30),
+                      topRight: Radius.circular(30),
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),
+                        spreadRadius: 5,
+                        blurRadius: 7,
+                        offset: Offset(0, 3), // changes position of shadow
+                      ),
+                    ],
+                  ),
+                  height: myHeight * 0.7,
+                  child: SingleChildScrollView(
+                    child: Container(
+                      child: Column(
+                        children: [
+                          SizedBox(height: 5),
+                          Container(
+                            width: myWidth * 0.9,
+                            child: Text('Price',
+                                style: TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.w500)),
+                          ),
+                          SizedBox(height: 5),
+                          Center(
+                            child: Container(
+                              height: myHeight * 0.03,
+                              child: ListView.builder(
+                                shrinkWrap: true,
+                                scrollDirection: Axis.horizontal,
+                                itemCount: text.length,
+                                itemBuilder: (context, index) {
+                                  return Padding(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: myWidth * 0.02),
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        setState(() {
+                                          textBool = [
+                                            false,
+                                            false,
+                                            false,
+                                            false,
+                                            false,
+                                            false
+                                          ];
+                                          textBool[index] = true;
+                                        });
+                                        setDays(text[index]);
+                                        getChart();
+                                      },
+                                      child: Container(
+                                        padding:
+                                            EdgeInsets.only(left: 8, right: 8),
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(5),
+                                          color: textBool[index] == true
+                                              ? Color.fromARGB(
+                                                      255, 126, 126, 126)
+                                                  .withOpacity(0.3)
+                                              : Colors.transparent,
+                                        ),
+                                        child: Text(
+                                          text[index],
+                                          style: TextStyle(
+                                            fontSize: 18,
+                                            color: textBool[index] == true
+                                                ? Color.fromARGB(
+                                                    255, 255, 255, 255)
+                                                : Color.fromARGB(255, 0, 0, 0),
+                                            fontWeight: textBool[index] == true
+                                                ? FontWeight.bold
+                                                : FontWeight.normal,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ),
+                            ),
+                          ),
+                          Container(
+                            height: myHeight * 0.3,
+                            width: myWidth * 0.95,
+                            // color: Colors.amber,
+                            child: isRefresh == true
+                                ? Center(
+                                    child: CircularProgressIndicator(
+                                      color: Color(0xffFBC700),
+                                    ),
+                                  )
+                                : itemChart == null
+                                    ? Padding(
+                                        padding:
+                                            EdgeInsets.all(myHeight * 0.06),
+                                        child: Center(
+                                          child: Text(
+                                            'Attention this Api is free, so you cannot send multiple requests per second, please wait and try again later.',
+                                            style: TextStyle(fontSize: 18),
+                                          ),
+                                        ),
+                                      )
+                                    : SfCartesianChart(
+                                        primaryXAxis: DateTimeAxis(),
+                                        trackballBehavior: trackballBehavior,
+                                        zoomPanBehavior: ZoomPanBehavior(
+                                          enablePinching: true,
+                                          zoomMode: ZoomMode.x,
+                                        ),
+                                        series: <CandleSeries>[
+                                          CandleSeries<ChartModel, DateTime>(
+                                            enableSolidCandles: true,
+                                            enableTooltip: true,
+                                            bullColor: Colors.green,
+                                            bearColor: Colors.red,
+                                            dataSource: itemChart!,
+                                            xValueMapper: (ChartModel sales,
+                                                    _) =>
+                                                DateTime
+                                                    .fromMillisecondsSinceEpoch(
+                                                        sales.time),
+                                            lowValueMapper:
+                                                (ChartModel sales, _) =>
+                                                    sales.low,
+                                            highValueMapper:
+                                                (ChartModel sales, _) =>
+                                                    sales.high,
+                                            openValueMapper:
+                                                (ChartModel sales, _) =>
+                                                    sales.open,
+                                            closeValueMapper:
+                                                (ChartModel sales, _) =>
+                                                    sales.close,
+                                            animationDuration: 55,
+                                          )
+                                        ],
+                                      ),
+                          ),
+                          Container(
+                            width: myWidth * 0.9,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text('History',
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w500)),
+                                Text('View More')
+                              ],
+                            ),
+                          ),
+                          SizedBox(height: 10),
+                          Container(
+                            width: myWidth * 0.9,
+                            child: Row(
+                              children: [
+                                Container(
+                                  padding: EdgeInsets.symmetric(
+                                      vertical: 5, horizontal: 5),
+                                  decoration: BoxDecoration(
+                                    color: Color.fromARGB(255, 215, 255, 213),
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(10),
+                                      topRight: Radius.circular(10),
+                                      bottomLeft: Radius.circular(10),
+                                      bottomRight: Radius.circular(10),
+                                    ),
+                                  ),
+                                  child: Icon(Icons.arrow_drop_up,
+                                      size: 40, color: Colors.green),
+                                ),
+                                SizedBox(width: 20),
+                                Text('BUY',
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w500))
+                              ],
+                            ),
+                          ),
+                          SizedBox(height: 10),
+                          Container(
+                              color: Colors.grey,
+                              height: 1,
+                              width: myWidth * 0.8),
+                          SizedBox(height: 10),
+                          Container(
+                            width: myWidth * 0.9,
+                            child: Row(
+                              children: [
+                                Container(
+                                  padding: EdgeInsets.symmetric(
+                                      vertical: 5, horizontal: 5),
+                                  decoration: BoxDecoration(
+                                    color: Color.fromARGB(255, 255, 213, 213),
+                                    borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(10),
+                                      topRight: Radius.circular(10),
+                                      bottomLeft: Radius.circular(10),
+                                      bottomRight: Radius.circular(10),
+                                    ),
+                                  ),
+                                  child: Icon(Icons.arrow_drop_down,
+                                      size: 40, color: Colors.red),
+                                ),
+                                SizedBox(width: 20),
+                                Text('SELL',
+                                    style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w500)),
+                              ],
+                            ),
+                          ),
+                          SizedBox(height: 15),
+                          Container(
+                            width: myWidth * 0.9,
+                            child: Text('News about ${widget.selectStock.name}',
+                                style: TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.w500)),
+                          ),
+                          Card(
+                            margin: EdgeInsets.all(20),
+                            elevation: 5,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            color: Colors.white,
+                            child: Container(
+                              height: 175,
+                              width: 340,
+                              padding: EdgeInsets.all(16),
+                              child: const Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Reuters',
+                                    style: TextStyle(
+                                      fontSize: 12.0,
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                  Text(
+                                    'US STOCKS Wall St eyes muted open after rally on AI boost, inflation relief ',
+                                    style: TextStyle(
+                                      fontSize: 15.0,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  Text(
+                                    'Wall Street was set for a muted open on Friday after rally in the previous session driven by an inflation ... ',
+                                    style: TextStyle(
+                                      fontSize: 12.0,
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                  Align(
+                                    alignment: Alignment.bottomRight,
+                                    child: TextButton(
+                                      onPressed: null,
+                                      child: Text('View More >'),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
                         ],
                       ),
-          ),
-          Center(
-            child: Container(
-              height: myHeight * 0.03,
-              child: ListView.builder(
-                shrinkWrap: true,
-                scrollDirection: Axis.horizontal,
-                itemCount: text.length,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: EdgeInsets.symmetric(horizontal: myWidth * 0.02),
-                    child: GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          textBool = [false, false, false, false, false, false];
-                          textBool[index] = true;
-                        });
-                        setDays(text[index]);
-                        getChart();
-                      },
-                      child: Container(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: myWidth * 0.03,
-                            vertical: myHeight * 0.005),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          color: textBool[index] == true
-                              ? Color(0xffFBC700).withOpacity(0.3)
-                              : Colors.transparent,
-                        ),
-                        child: Text(
-                          text[index],
-                          style: TextStyle(fontSize: 18),
-                        ),
-                      ),
                     ),
-                  );
-                },
-              ),
+                  ),
+                ),
+              ],
             ),
           ),
-        ],
-      ),
-    )));
+        ),
+        Container(
+          alignment: Alignment.bottomCenter,
+          child: Card(
+            margin: EdgeInsets.all(10),
+            elevation: 5,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+            ),
+            color: Colors.white,
+            child: Row(
+              children: [
+                Expanded(
+                  flex: 3,
+                  child: GestureDetector(
+                    onTap: () async {
+                      final TextEditingController _controller =
+                          TextEditingController();
+                      await showDialog(
+                        context: context,
+                        builder: (context) {
+                          return Container(
+                            child: AlertDialog(
+                              backgroundColor: Colors.white,
+                              title: Text('Enter Number of Units'),
+                              content: TextField(
+                                controller: _controller,
+                                keyboardType: TextInputType.number,
+                                decoration: InputDecoration(
+                                  hintText: 'Enter units',
+                                ),
+                              ),
+                              actions: <Widget>[
+                                TextButton(
+                                  onPressed: () {
+                                    Navigator.of(context).pop();
+                                  },
+                                  child: Text('Cancel'),
+                                ),
+                                TextButton(
+                                  onPressed: () {
+                                    int newUnit =
+                                        int.tryParse(_controller.text) ?? unit;
+                                    setState(() {
+                                      unit = newUnit;
+                                      totalPrice =
+                                          widget.selectStock.cm.currentPrice *
+                                              newUnit;
+                                    });
+                                    Navigator.of(context).pop();
+                                  },
+                                  child: Text('OK', style: TextStyle(color: Colors.green, fontSize: 20)),
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      );
+                    },
+                    child: Container(
+                      height: 80,
+                      margin: EdgeInsets.only(left: 15),
+                      padding: EdgeInsets.all(8),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              Text('${totalPrice.toStringAsFixed(2)}',
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w500)),
+                              Text('  RM',
+                                  style: TextStyle(
+                                      fontSize: 18, color: Colors.grey)),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Text('${unit}',
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w500)),
+                              Text('  UNIT',
+                                  style: TextStyle(
+                                      fontSize: 18, color: Colors.grey)),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: Text('SELL',
+                      style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.red)),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: Text('BUY',
+                      style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500,
+                          color: Colors.green)),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
+    ));
   }
 
-  List<String> text = ['D', 'W', 'M', '3M', '6M', 'Y'];
-  List<bool> textBool = [false, false, true, false, false, false];
+  List<String> text = ['1D', '1W', '1M', '3M', '6M', '1Y'];
+  List<bool> textBool = [true, false, false, false, false, false];
 
-  int days = 30;
+  int days = 1;
 
   setDays(String txt) {
-    if (txt == 'D') {
+    if (txt == '1D') {
       setState(() {
         days = 1;
       });
-    } else if (txt == 'W') {
+    } else if (txt == '1W') {
       setState(() {
         days = 7;
       });
-    } else if (txt == 'M') {
+    } else if (txt == '1M') {
       setState(() {
         days = 30;
       });
@@ -150,7 +591,7 @@ class _StockPageState extends State<StockPage> {
       setState(() {
         days = 180;
       });
-    } else if (txt == 'Y') {
+    } else if (txt == '1Y') {
       setState(() {
         days = 365;
       });

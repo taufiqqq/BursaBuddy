@@ -40,24 +40,44 @@ class _StockListPageState extends State<StockListPage> {
           future: _coinMarketFuture,
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return Center(
-                child: CircularProgressIndicator(),
+              return Column(
+                children: [CustomHeader(
+                    onBackTap: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                  Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                ],
               );
             } else if (snapshot.hasError) {
-              return Center(
-                child: Text('Error: ${snapshot.error}'),
+              return Column(
+                children: [CustomHeader(
+                    onBackTap: () {
+                      Navigator.pop(context);
+                    },
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: Center(
+                      child: Text('Error: ${snapshot.error}'),
+                    ),
+                  ),
+                ],
               );
             } else {
               // Data has been fetched successfully
               stocks = [
-                Stock("MAYBANK", snapshot.data![0]),
-                Stock("GAMUDA", snapshot.data![1]),
-                Stock("RAPID", snapshot.data![2]),
-                Stock("MAXIS", snapshot.data![3]),
-                Stock("MAYBANK", snapshot.data![4]),
-                Stock("GAMUDA", snapshot.data![5]),
-                Stock("RAPID", snapshot.data![6]),
-                Stock("MAXIS", snapshot.data![7]),
+                Stock("MAYBANK", "Maybank Bhd" , snapshot.data![0]),
+                Stock("GAMUDA", "Gamuda Bhd", snapshot.data![1]),
+                Stock("RAPID", "Rapid Synergy Bhd", snapshot.data![2]),
+                Stock("MAXIS", "Maxis Bhd", snapshot.data![3]),
+                Stock("EDELTEQ", "Edelteq Holdings Bhd", snapshot.data![4]),
+                Stock("PHARMA", "Pharmaniaga Bhd", snapshot.data![5]),
+                Stock("AXIATA", "Axiata Group Bhd", snapshot.data![6]),
+                Stock("ENCORP", "Encorp Bhd", snapshot.data![7]),
+                Stock("CloutPT", "Cloudpoint Technology Bhd", snapshot.data![8]),
               ];
 
               return Column(
@@ -92,7 +112,7 @@ class _StockListPageState extends State<StockListPage> {
     double myWidth = MediaQuery.of(context).size.width;
     return GestureDetector(
       child: Container(
-        margin: EdgeInsets.symmetric(vertical: 10),
+        margin: EdgeInsets.only(bottom: 10),
         padding: EdgeInsets.all(10),
         decoration: BoxDecoration(
           color: Colors.white,
@@ -120,8 +140,8 @@ class _StockListPageState extends State<StockListPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(stock.name,
-                        style: TextStyle(fontWeight: FontWeight.bold)),
-                    Text(stock.cm.name), // Assuming cm has a property 'name'
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
+                    Text(stock.fullName, style: TextStyle(fontSize: 12),), // Assuming cm has a property 'name'
                   ],
                 ),
               ),
@@ -210,52 +230,54 @@ class CustomHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.only(top: 50, left: 20, right: 20),
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  GestureDetector(
-                    child: Icon(Icons.arrow_back_rounded, color: Colors.white),
-                    onTap: onBackTap,
-                  )
-                ],
-              ),
-              Text(
-                "Stocks",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
+    return SafeArea(
+      child: Container(
+        padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    GestureDetector(
+                      child: Icon(Icons.arrow_back_rounded, color: Colors.white),
+                      onTap: onBackTap,
+                    )
+                  ],
                 ),
-              ),
-              Icon(
-                Icons.more_horiz,
-                size: 35.0,
-                color: Colors.white,
-              ),
-            ],
-          ),
-          SizedBox(height: 30),
-          SearchTextField(),
-          SizedBox(height: 5),
-          Row(
-            children: [
-              SizedBox(
-                width: 5,
-              ),
-              Text("Global", style: TextStyle(color: Colors.white)),
-              Icon(Icons.arrow_drop_down, color: Colors.white)
-            ],
-          ),
-          SizedBox(height: 10),
-        ],
+                Text(
+                  "Stocks",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ),
+                ),
+                Icon(
+                  Icons.more_horiz,
+                  size: 35.0,
+                  color: Colors.white,
+                ),
+              ],
+            ),
+            SizedBox(height: 30),
+            SearchTextField(),
+            SizedBox(height: 5),
+            Row(
+              children: [
+                SizedBox(
+                  width: 5,
+                ),
+                Text("Global", style: TextStyle(color: Colors.white)),
+                Icon(Icons.arrow_drop_down, color: Colors.white)
+              ],
+            ),
+            SizedBox(height: 10),
+          ],
+        ),
       ),
     );
   }

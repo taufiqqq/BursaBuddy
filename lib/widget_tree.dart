@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 import 'pages/community_page.dart';
 import 'pages/homepage.dart';
-import 'pages/portfolio_page.dart';
+import 'pages/profile_page.dart';
 
 class WidgetTree extends StatefulWidget {
   const WidgetTree({super.key});
@@ -22,7 +22,7 @@ class _WidgetTreeState extends State<WidgetTree> {
     LearnPage(),
     StockListPage(),
     CommunityPage(),
-    PortfolioPage()
+    ProfilePage()
   ];
 
   @override

@@ -3,9 +3,14 @@ import 'package:flutter/material.dart';
 
 import '../widgets/search_field.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key});
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,28 +55,33 @@ class HomePage extends StatelessWidget {
                     ],
                   ),
                   SizedBox(height: 10),
-                  const Padding(
+                  Padding(
                     padding: EdgeInsets.symmetric(horizontal: 24.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'RM',
-                          style: TextStyle(
-                            fontSize: 20.0,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
+                    child: GestureDetector(
+                      onTap: () {} ,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'RM',
+                            style: TextStyle(
+                              fontSize: 20.0,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                        ),
-                        Text(
-                          '100,000.00',
-                          style: TextStyle(
-                            fontSize: 40.0,
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
+                          Text(
+                            '100,000.00',
+                            style: TextStyle(
+                              fontSize: 40.0,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
                           ),
-                        ),
-                      ],
+                          SizedBox(width: 10),
+                          Icon(Icons.edit_outlined, color: Colors.white)
+                        ],
+                      ),
                     ),
                   ),
                   SizedBox(height: 10),
