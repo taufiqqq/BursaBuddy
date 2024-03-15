@@ -53,7 +53,6 @@ class BeginnerPage extends StatelessWidget {
               padding: const EdgeInsets.only(
                   top: 100, left: 25, right: 25, bottom: 30),
               child: Stack(
-                // Wrap your content with Stack
                 children: [
                   Container(
                     height: double.infinity,
@@ -142,31 +141,39 @@ class BeginnerPage extends StatelessWidget {
                   Positioned(
                     bottom: 20,
                     right: 20,
-                    child: Container(
-                      width: 120,
-                      height: 50,
-                      decoration: BoxDecoration(
-                        color: Colors.blue,
-                        borderRadius: BorderRadius.circular(15),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Color(0x3f000000),
-                            offset: Offset(0, 4),
-                            blurRadius: 2,
-                          ),
-                          BoxShadow(
-                            color: Color(0x3f000000),
-                            offset: Offset(0, 4),
-                            blurRadius: 2,
-                          ),
-                        ],
-                      ),
-                      child: Center(
-                        child: Text(
-                          "Enroll Now",
-                          style: TextStyle(
-                            fontSize: 17,
-                            fontWeight: FontWeight.w600,
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => LessonPage()),
+                        );
+                      },
+                      child: Container(
+                        width: 120,
+                        height: 50,
+                        decoration: BoxDecoration(
+                          color: Colors.blue,
+                          borderRadius: BorderRadius.circular(15),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Color(0x3f000000),
+                              offset: Offset(0, 4),
+                              blurRadius: 2,
+                            ),
+                            BoxShadow(
+                              color: Color(0x3f000000),
+                              offset: Offset(0, 4),
+                              blurRadius: 2,
+                            ),
+                          ],
+                        ),
+                        child: Center(
+                          child: Text(
+                            "Enroll Now",
+                            style: TextStyle(
+                              fontSize: 17,
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
                         ),
                       ),
