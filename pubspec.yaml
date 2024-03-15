@@ -41,6 +41,7 @@ dependencies:
   http: ^1.2.1
   syncfusion_flutter_charts: ^24.2.9
   pie_chart: ^5.4.0
+  like_button: ^2.0.5
 
 dev_dependencies:
   flutter_test:
