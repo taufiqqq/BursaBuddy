@@ -1,16 +1,59 @@
-# bijaktrade
+# BursaBuddy+
 
-A new Flutter project.
+## Overview
 
-## Getting Started
+BursaBuddy+ is a mobile application built with flutter designed to provide users with a comprehensive platform for paper trading, learning trading skills, tracking their portfolio, and engaging in a community of traders. The application specifically caters to the Malaysian capital market, with a focus on Shariah-compliant stocks listed on Bursa Malaysia.
 
-This project is a starting point for a Flutter application.
+## Features
 
-A few resources to get you started if this is your first Flutter project:
+### Paper Trading
+- Users can simulate real stock trading without risking actual money.
+- Practice trading strategies and understand market dynamics in a risk-free environment.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Learning Resources
+- Access to educational materials and resources to enhance trading skills.
+- Tutorials, articles, and tips to improve understanding of the stock market.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Portfolio Tracking
+- Track the performance of investments in real-time.
+- View portfolio breakdown, gains, and losses.
+
+### Community Engagement
+- Connect with fellow traders to share insights and strategies.
+- Participate in discussions, ask questions, and learn from others' experiences.
+
+### Shariah-Compliant Stocks
+- Focus on stocks that comply with Islamic principles.
+- Access a curated list of Shariah-compliant securities listed on Bursa Malaysia.
+
+### Mirror Trading
+- Option to engage in mirror trading, allowing users to replicate the trades of experienced investors.
+- Learn from successful traders and mirror their investment decisions.
+
+## Installation
+
+1. Clone the repository from [GitHub](https://github.com/taufiqqq/bursabuddy).
+2. Ensure you have Flutter installed on your machine.
+3. Run `flutter pub get` to install dependencies.
+4. Connect your device or use an emulator.
+5. Run `flutter run` to launch the application.
+
+## Usage
+
+1. Sign up or log in to your BursaBuddy+ account.
+2. Explore the available features such as paper trading, learning resources, and portfolio tracking.
+3. Engage with the community by joining discussions and sharing insights.
+4. Consider mirror trading to replicate successful investment strategies.
+5. Monitor your portfolio performance regularly and adjust your trading approach as needed.
+
+## Contributing
+
+Contributions to BursaBuddy+ are welcome! Whether you're a developer, designer, or have ideas for new features, feel free to contribute by submitting pull requests or opening issues on [GitHub](https://github.com/yourusername/bursabuddy).
+
+## Support
+
+For any inquiries or assistance, please contact us at support@bursabuddy.com.
+
+## License
+
+All rights reserved. This software is confidential and proprietary to our team as a participation to VHACK2024. Unauthorized copying, distribution, or modification of this software, in whole or in part, is strictly prohibited.
