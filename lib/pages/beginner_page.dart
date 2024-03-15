@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'lesson_page.dart';
+
 class BeginnerPage extends StatelessWidget {
   const BeginnerPage({super.key});
 
