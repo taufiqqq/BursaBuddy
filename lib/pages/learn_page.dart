@@ -229,15 +229,15 @@ class LearnPage extends StatelessWidget {
                   children: [
                     LearnCard(
                       title: "Investing",
-                      imagePath: "assets/images/learn1.png",
+                      imagePath: 'assets/images/learn1.png',
                     ),
                     LearnCard(
                       title: "Anything",
-                      imagePath: "assets/images/learn2.png",
+                      imagePath: 'assets/images/learn2.png',
                     ),
                     LearnCard(
                       title: "basic Stuff",
-                      imagePath: "assets/images/learn3.png",
+                      imagePath: 'assets/images/learn3.png',
                     )
                   ],
                 ),
