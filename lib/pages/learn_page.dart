@@ -232,11 +232,11 @@ class LearnPage extends StatelessWidget {
                       imagePath: 'assets/images/learn1.png',
                     ),
                     LearnCard(
-                      title: "Anything",
+                      title: "Stocks",
                       imagePath: 'assets/images/learn2.png',
                     ),
                     LearnCard(
-                      title: "basic Stuff",
+                      title: "Index Funds",
                       imagePath: 'assets/images/learn3.png',
                     )
                   ],
