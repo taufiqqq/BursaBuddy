@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-import 'homepage.dart';
+import 'question_page.dart';
 
 class LessonPage extends StatefulWidget {
   const LessonPage({Key? key}) : super(key: key);
@@ -178,7 +178,7 @@ class _HomePageState extends State<LessonPage> with TickerProviderStateMixin {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => HomePage()),
+                  MaterialPageRoute(builder: (context) => QuestionPage()),
                 );
               },
               child: Icon(Icons.arrow_forward_sharp),
