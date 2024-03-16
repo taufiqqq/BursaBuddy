@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import '../pages/beginner_page.dart';
 
 class LearnCard extends StatelessWidget {
-  const LearnCard({super.key});
+  const LearnCard({super.key, required this.title, required this.imagePath});
+  final String title;
+  final String imagePath;
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +48,7 @@ class LearnCard extends StatelessWidget {
                     decoration: BoxDecoration(
                       image: DecorationImage(
                         fit: BoxFit.cover,
-                        image: AssetImage('assets/images/learn1.png'),
+                        image: AssetImage(imagePath),
                       ),
                     ),
                   ),
@@ -57,10 +59,8 @@ class LearnCard extends StatelessWidget {
                   child: Container(
                     padding: EdgeInsets.all(5),
                     child: Text(
-                      'Basic Stuff',
-                      style: TextStyle(
-                        color: Colors.black,
-                      ),
+                      title,
+                      style: TextStyle(color: Colors.black, fontSize: 17),
                     ),
                   ),
                 ),

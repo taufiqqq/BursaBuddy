@@ -226,7 +226,20 @@ class LearnPage extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsets.symmetric(vertical: 15, horizontal: 5),
                 child: Row(
-                  children: [LearnCard(), LearnCard(), LearnCard()],
+                  children: [
+                    LearnCard(
+                      title: "Investing",
+                      imagePath: "assets/images/learn1.png",
+                    ),
+                    LearnCard(
+                      title: "Anything",
+                      imagePath: "assets/images/learn2.png",
+                    ),
+                    LearnCard(
+                      title: "basic Stuff",
+                      imagePath: "assets/images/learn3.png",
+                    )
+                  ],
                 ),
               ),
             ),
@@ -259,7 +272,20 @@ class LearnPage extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsets.symmetric(vertical: 15, horizontal: 5),
                 child: Row(
-                  children: [LearnCard(), LearnCard(), LearnCard()],
+                  children: [
+                    LearnCard(
+                      title: "This and that",
+                      imagePath: 'assets/images/learn4.png',
+                    ),
+                    LearnCard(
+                      title: "hello",
+                      imagePath: 'assets/images/learn5.png',
+                    ),
+                    LearnCard(
+                      title: "yow",
+                      imagePath: 'assets/images/learn6.png',
+                    )
+                  ],
                 ),
               ),
             ),
@@ -292,7 +318,20 @@ class LearnPage extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsets.symmetric(vertical: 15, horizontal: 5),
                 child: Row(
-                  children: [LearnCard(), LearnCard(), LearnCard()],
+                  children: [
+                    LearnCard(
+                      title: "basic ",
+                      imagePath: 'assets/images/learn7.png',
+                    ),
+                    LearnCard(
+                      title: "not basic ",
+                      imagePath: 'assets/images/learn8.png',
+                    ),
+                    LearnCard(
+                      title: "basic Stuff",
+                      imagePath: 'assets/images/learn9.png',
+                    )
+                  ],
                 ),
               ),
             ),
