@@ -130,7 +130,7 @@ class _HomePageState extends State<LessonPage> with TickerProviderStateMixin {
                                     ),
                                   ),
                                   Image.asset(
-                                    'images/breakout.png',
+                                    'assets/images/breakout.png',
                                     width: 250,
                                     height: 250,
                                   ),
