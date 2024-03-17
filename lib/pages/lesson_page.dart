@@ -3,6 +3,9 @@ import 'dart:math';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'learn_page.dart';
+import 'question_page.dart';
+
 class LessonPage extends StatefulWidget {
   const LessonPage({Key? key}) : super(key: key);
 
@@ -47,7 +50,7 @@ class _HomePageState extends State<LessonPage> with TickerProviderStateMixin {
                   );
                 },
                 child: Text(
-                  "Not Yet Ready",
+                  "Not Ready Yet",
                 ),
               ),
               MaterialButton(
