@@ -1,8 +1,7 @@
 import 'dart:math';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import 'question_page.dart';
 
 class LessonPage extends StatefulWidget {
   const LessonPage({Key? key}) : super(key: key);
@@ -29,6 +28,43 @@ class _HomePageState extends State<LessonPage> with TickerProviderStateMixin {
       ..addStatusListener((status) {
         _status = status;
       });
+  }
+
+  void _showDialog() {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return CupertinoAlertDialog(
+            title: Text("Knowledge Check"),
+            content: Text("Lets Go For Quiz"),
+            actions: [
+              MaterialButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => LearnPage()),
+                  );
+                },
+                child: Text(
+                  "Not Yet Ready",
+                ),
+              ),
+              MaterialButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => QuestionPage()),
+                  );
+                },
+                child: Text(
+                  "Let's Go",
+                ),
+              ),
+            ],
+          );
+        });
   }
 
   @override
@@ -172,18 +208,10 @@ class _HomePageState extends State<LessonPage> with TickerProviderStateMixin {
             ),
           ),
           Positioned(
-            bottom: 65,
-            right: 20,
-            child: GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => QuestionPage()),
-                );
-              },
-              child: Icon(Icons.arrow_forward_sharp),
-            ),
-          ),
+              bottom: 65,
+              right: 20,
+              child: MaterialButton(
+                  onPressed: _showDialog, child: Icon(Icons.arrow_forward))),
         ],
       ),
     );
