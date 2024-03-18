@@ -127,7 +127,7 @@ class _QuestionPageState extends State<QuestionPage> {
                                 ),
                               ),
                               SizedBox(
-                                height: 30.0,
+                                height: 10.0,
                               ),
                               Flexible(
                                 child: Text(
@@ -137,6 +137,9 @@ class _QuestionPageState extends State<QuestionPage> {
                                     fontSize: 22.0,
                                   ),
                                 ),
+                              ),
+                              SizedBox(
+                                height: 20.0,
                               ),
                               for (int i = 0;
                                   i < questions[index].answers!.length;
