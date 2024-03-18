@@ -12,9 +12,14 @@ class SearchTextField extends StatelessWidget {
           color: Colors.grey,
           size: 30,
         ),
-        suffixIcon: const Icon(
-          Icons.mic,
-          size: 26,
+        suffixIcon: IconButton(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => ChatbotPage()),
+            );
+          },
+          icon: Icon(Icons.send),
         ),
         floatingLabelBehavior: FloatingLabelBehavior.never,
         labelText: "Search",
