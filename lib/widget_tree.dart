@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'pages/community_page.dart';
 import 'pages/homepage.dart';
+import 'pages/main_learn_page.dart';
 import 'pages/profile_page.dart';
 
 class WidgetTree extends StatefulWidget {
