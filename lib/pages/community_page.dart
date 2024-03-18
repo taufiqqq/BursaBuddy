@@ -1,216 +1,81 @@
+import 'package:bijaktrade/pages/calculator_page.dart';
+import 'package:bijaktrade/pages/feed_page.dart';
+import 'package:bijaktrade/pages/portfolio_page.dart';
+import 'package:bijaktrade/pages/trader_ranking.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:like_button/like_button.dart';
 
-import '../model/feed.dart';
-
-class CommunityPage extends StatelessWidget {
+class CommunityPage extends StatefulWidget {
   const CommunityPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: const FeedPage(),
-    );
-  }
+  State<CommunityPage> createState() => _CommunityPageState();
 }
 
-class FeedPage extends StatefulWidget {
-  const FeedPage({super.key});
+class _CommunityPageState extends State<CommunityPage> {
+  int? sliding = 0;
 
-  @override
-  State<FeedPage> createState() => _FeedPage();
-}
-
-class _FeedPage extends State<FeedPage> {
-  final GlobalKey<ScaffoldState> _globalKey = GlobalKey();
-
-  TextEditingController feedController = TextEditingController();
-  List<Feed> feeds = List.empty(growable: true);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      key: _globalKey,
-      backgroundColor:
-          Colors.transparent, // Make Scaffold background transparent
-      body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [
-              Color(0xFF00002136),
-              Color(0xFF104A57),
-            ],
-            begin: Alignment.bottomCenter,
-            end: Alignment.center,
-          ),
-        ),
-        child: Stack(
-          children: [
-            Column(
-              children: [
-                SizedBox(
-                  height: 50,
-                ),
-                SizedBox(
-                  height: 50,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    padding: const EdgeInsets.only(left: 90),
-                    children: [
-                      TextButton(
-                        onPressed: () {},
-                        child: const Text(
-                          "Feed",
-                          style: TextStyle(color: Colors.white, fontSize: 20),
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 35,
-                      ),
-                      TextButton(
-                        onPressed: () {},
-                        child: const Text(
-                          "Top Trader",
-                          style: TextStyle(color: Colors.grey, fontSize: 20),
-                        ),
-                      ),
-                    ],
-                  ),
-                )
-              ],
-            ),
-            Positioned(
-              top: 190,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              child: Container(
-                padding: const EdgeInsets.symmetric(vertical: 15),
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(40),
-                    topRight: Radius.circular(40),
-                  ),
-                  color: Colors.white,
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(15.0),
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          Expanded(
-                            child: TextField(
-                              controller: feedController,
-                              decoration: const InputDecoration(
-                                hintText: "Share Your Thought",
-                                contentPadding: EdgeInsets.symmetric(
-                                  vertical: 15.0, // Adjust the height as needed
-                                  horizontal: 10.0,
-                                ),
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.all(
-                                    Radius.circular(20),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 10.0,
-                          ),
-                          ElevatedButton(
-                            onPressed: () {
-                              String feed = feedController.text.trim();
-                              if (feed.isNotEmpty) {
-                                setState(() {
-                                  feeds.add(Feed(feedText: feed));
-                                });
-                              }
-                            },
-                            child: Icon(Icons.send),
-                          ),
-                        ],
-                      ),
-                      SizedBox(
-                        height: 20.0,
-                      ),
-                      feeds.isEmpty
-                          ? const Text("Still Empty . . .")
-                          : Expanded(
-                              child: ListView.builder(
-                                itemCount: feeds.length,
-                                itemBuilder: (context, index) => getRow(index),
-                              ),
-                            )
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
+  Widget buildSegmentedControlContent() {
+    if (sliding == 0) {
+      return FeedPage();
+    } else if (sliding == 1) {
+      return TopTrader();
+    } else {
+      return Container(); // Return an empty container by default or handle other cases
+    }
   }
 
-  Widget getRow(int index) {
-    return Column(
-      children: [
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  @override
+  Widget build(BuildContext context) => Scaffold(
+        backgroundColor: Color.fromARGB(255, 9, 81, 94),
+        body: ListView(
           children: [
+            const SizedBox(
+              height: 20,
+            ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                CircleAvatar(
-                    backgroundColor:
-                        index % 2 == 0 ? Colors.brown : Colors.orange,
-                    child: Text("?")),
-                SizedBox(
-                  width: 30,
+                SizedBox(width: 24),
+                Center(
+                  child: CupertinoSlidingSegmentedControl(
+                    children: {
+                      0: Text('Feed',
+                          style: TextStyle(
+                              color:
+                                  sliding == 1 ? Colors.white : Colors.black)),
+                      1: Text('Top Trader',
+                          style: TextStyle(
+                              color:
+                                  sliding == 0 ? Colors.white : Colors.black)),
+                    },
+                    groupValue: sliding,
+                    onValueChanged: (int? newValue) {
+                      setState(
+                        () {
+                          sliding = newValue;
+                        },
+                      );
+                    },
+                  ),
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "@anonymous",
-                      style: TextStyle(color: Colors.grey),
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Text(
-                      feeds[index].feedText,
-                      style: TextStyle(color: Colors.black),
-                    ),
-                  ],
-                )
+                Icon(Icons.settings, color: Colors.white)
               ],
             ),
-            const Padding(
-              padding: EdgeInsets.only(right: 25, top: 5),
-              child: Column(
-                children: [
-                  Text(
-                    '16:35',
-                    style: TextStyle(fontSize: 10),
-                  ),
-                  SizedBox(
-                    height: 15,
-                  ),
-                  LikeButton(),
-                ],
-              ),
+            const SizedBox(
+              height: 20,
             ),
+
+            // Display content based on the selected value of the segmented control
+            buildSegmentedControlContent(),
           ],
         ),
-        const Divider(
-          indent: 70,
-          height: 20,
-        )
-      ],
+      );
+
+  Widget buildSegment(String text) {
+    return Text(
+      text,
+      style: const TextStyle(fontSize: 17, color: Colors.black),
     );
   }
 }

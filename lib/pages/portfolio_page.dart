@@ -14,10 +14,9 @@ class _PortfolioPageState extends State<PortfolioPage> {
     double myHeight = MediaQuery.of(context).size.height;
     double myWidth = MediaQuery.of(context).size.width;
     Map<String, double> dataMap = {
-      "Flutter": 5,
-      "React": 3,
-      "Xamarin": 2,
-      "Ionic": 2,
+      "Cash": 40000,
+      "Maybank": 30000,
+      "Gamuda": 15000,
     };
     return Container(
         child: Column(
@@ -65,8 +64,8 @@ class _PortfolioPageState extends State<PortfolioPage> {
           chartType: ChartType.ring,
           chartRadius: 150,
           ringStrokeWidth: 50,
-          legendOptions: LegendOptions(showLegends: false),
-          chartValuesOptions: ChartValuesOptions(showChartValues: false),
+          legendOptions: LegendOptions(showLegends: true, legendTextStyle: TextStyle(color: Colors.white) ),
+          chartValuesOptions: ChartValuesOptions(),
         ),
         SizedBox(height: 50),
         Container(

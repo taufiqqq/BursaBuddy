@@ -108,7 +108,7 @@ class _StockPageState extends State<StockPage> {
                                     fontWeight: FontWeight.normal,
                                     fontSize: 15,
                                     color: Colors.white)),
-                            SizedBox(height: 12),
+                            SizedBox(height: 10),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -161,7 +161,7 @@ class _StockPageState extends State<StockPage> {
                           ],
                         ),
                       ),
-                      SizedBox(height: 15),
+                      SizedBox(height: 12),
                     ],
                   ),
                 ),
