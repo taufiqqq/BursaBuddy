@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:learn/pages/learn_page.dart';
+
+import '../pages/learn_page.dart';
 
 class ModuleLearnCard extends StatelessWidget {
   const ModuleLearnCard(
