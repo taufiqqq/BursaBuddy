@@ -1,6 +1,7 @@
 import 'package:bijaktrade/pages/learn_page.dart';
 import 'package:flutter/material.dart';
 
+// ignore: must_be_immutable
 class ResultPage extends StatefulWidget {
   int score;
   ResultPage(this.score, {Key? key}) : super(key: key);

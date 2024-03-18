@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../pages/chatbot_page.dart';
+
 class SearchTextField extends StatelessWidget {
   const SearchTextField({super.key});
 
