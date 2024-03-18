@@ -192,7 +192,7 @@ class _QuestionPageState extends State<QuestionPage> {
                                     ),
                                   ),
                                 SizedBox(
-                                  height: 40.0,
+                                  height: 10.0,
                                 ),
                                 RawMaterialButton(
                                   onPressed: () {
