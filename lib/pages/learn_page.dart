@@ -32,23 +32,7 @@ class LearnPage extends StatelessWidget {
                   const Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Choose Quiz',
-                            style: TextStyle(
-                              fontSize: 20.0,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
                   ),
-                  SizedBox(height: 20),
                   Row(
                     children: [
                       IconButton(
@@ -279,15 +263,15 @@ class LearnPage extends StatelessWidget {
                 child: Row(
                   children: [
                     LearnCard(
-                      title: "This and that",
+                      title: "Module Title",
                       imagePath: 'assets/images/learn4.png',
                     ),
                     LearnCard(
-                      title: "hello",
+                      title: "Module Title",
                       imagePath: 'assets/images/learn5.png',
                     ),
                     LearnCard(
-                      title: "yow",
+                      title: "Module Title",
                       imagePath: 'assets/images/learn6.png',
                     )
                   ],
@@ -325,15 +309,15 @@ class LearnPage extends StatelessWidget {
                 child: Row(
                   children: [
                     LearnCard(
-                      title: "basic ",
+                      title: "Module Title ",
                       imagePath: 'assets/images/learn7.png',
                     ),
                     LearnCard(
-                      title: "not basic ",
+                      title: "Module Title ",
                       imagePath: 'assets/images/learn8.png',
                     ),
                     LearnCard(
-                      title: "basic Stuff",
+                      title: "Module Title",
                       imagePath: 'assets/images/learn9.png',
                     )
                   ],
