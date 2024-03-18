@@ -143,15 +143,15 @@ class MainLearnPage extends StatelessWidget {
                   children: [
                     ModuleLearnCard(
                       title: "Module 1",
-                      imagePath: "images/learn4.png",
+                      imagePath: "assets/images/learn4.png",
                     ),
                     ModuleLearnCard(
                       title: "Module 2",
-                      imagePath: "images/learn5.png",
+                      imagePath: "assets/images/learn5.png",
                     ),
                     ModuleLearnCard(
                       title: "Module 3",
-                      imagePath: "images/learn6.png",
+                      imagePath: "assets/images/learn6.png",
                     )
                   ],
                 ),
@@ -221,7 +221,7 @@ class MainLearnPage extends StatelessWidget {
                             decoration: BoxDecoration(
                               image: DecorationImage(
                                 fit: BoxFit.cover,
-                                image: AssetImage("images/learn1.png"),
+                                image: AssetImage("assets/images/learn1.png"),
                               ),
                             ),
                           ),

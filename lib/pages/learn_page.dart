@@ -49,20 +49,25 @@ class LearnPage extends StatelessWidget {
                     ],
                   ),
                   SizedBox(height: 20),
-                  const Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
+                  Row(
                     children: [
-                      Column(
-                        children: [
-                          Text(
-                            'Progress :',
-                            style: TextStyle(
-                              fontSize: 20.0,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ],
+                      IconButton(
+                        icon: Icon(Icons.arrow_back),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        color: Colors.white,
+                      ),
+                      SizedBox(
+                        width: 70,
+                      ),
+                      const Text(
+                        'Choose Quiz',
+                        style: TextStyle(
+                          fontSize: 20.0,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ],
                   ),
