@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../pages/learn_page.dart';
+import '../pages/beginner_page.dart';
 
 class ModuleLearnCard extends StatelessWidget {
   const ModuleLearnCard(
@@ -14,7 +14,7 @@ class ModuleLearnCard extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => LearnPage()),
+          MaterialPageRoute(builder: (context) => BeginnerPage()),
         );
       },
       child: Padding(

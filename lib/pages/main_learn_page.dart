@@ -1,7 +1,7 @@
+import 'package:bijaktrade/pages/learn_page.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/module_learn_card.dart';
-import 'question_page.dart';
 
 class MainLearnPage extends StatelessWidget {
   const MainLearnPage({Key? key}) : super(key: key);
@@ -39,7 +39,7 @@ class MainLearnPage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Choose Quiz',
+                            'Learning Centre',
                             style: TextStyle(
                               fontSize: 20.0,
                               color: Colors.white,
@@ -205,7 +205,7 @@ class MainLearnPage extends StatelessWidget {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => QuestionPage()),
+                      MaterialPageRoute(builder: (context) => LearnPage()),
                     );
                   },
                   child: Padding(

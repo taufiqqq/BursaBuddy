@@ -1,6 +1,5 @@
+import 'package:bijaktrade/pages/question_page.dart';
 import 'package:flutter/material.dart';
-
-import '../pages/beginner_page.dart';
 
 class LearnCard extends StatelessWidget {
   const LearnCard({super.key, required this.title, required this.imagePath});
@@ -13,7 +12,7 @@ class LearnCard extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => BeginnerPage()),
+          MaterialPageRoute(builder: (context) => QuestionPage()),
         );
       },
       child: Padding(
