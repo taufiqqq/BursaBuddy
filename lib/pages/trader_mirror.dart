@@ -49,7 +49,10 @@ class _TraderMirrorState extends State<TraderMirror> {
           child: Column(
             children: [
               SizedBox(height: 10),
-              Container(),
+              Align(
+                alignment: Alignment.center,
+                child: Image.asset("assets/images/reference.png")
+              ),
             ],
           ),
         ),

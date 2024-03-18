@@ -1,5 +1,6 @@
 import 'package:bijaktrade/model/feed.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:like_button/like_button.dart';
 
 class CommentFeedPage extends StatefulWidget {
@@ -24,7 +25,15 @@ class _CommentFeedPageState extends State<CommentFeedPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(height: 5),
+                Align(
+                  alignment: Alignment.centerLeft,
+                  child: GestureDetector(
+                      child: Icon(Icons.arrow_back),
+                      onTap: () {
+                        Navigator.pop(context);
+                      }),
+                ),
+                SizedBox(height: 10),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -73,8 +82,8 @@ class _CommentFeedPageState extends State<CommentFeedPage> {
                           children: [
                             Icon(Icons.comment_outlined, size: 18),
                             Text('10',
-                                style:
-                                    TextStyle(fontSize: 15, color: Colors.grey)),
+                                style: TextStyle(
+                                    fontSize: 15, color: Colors.grey)),
                           ],
                         ),
                         Row(
@@ -83,16 +92,16 @@ class _CommentFeedPageState extends State<CommentFeedPage> {
                               size: 18,
                             ),
                             Text('10',
-                                style:
-                                    TextStyle(fontSize: 15, color: Colors.grey)),
+                                style: TextStyle(
+                                    fontSize: 15, color: Colors.grey)),
                           ],
                         ),
                         Row(
                           children: [
                             Icon(Icons.save_alt_outlined, size: 18),
                             Text('10',
-                                style:
-                                    TextStyle(fontSize: 15, color: Colors.grey)),
+                                style: TextStyle(
+                                    fontSize: 15, color: Colors.grey)),
                           ],
                         ),
                       ]),
