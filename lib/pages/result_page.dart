@@ -1,7 +1,7 @@
-import 'package:bijaktrade/pages/learn_page.dart';
 import 'package:flutter/material.dart';
 
-// ignore: must_be_immutable
+import 'learn_page.dart';
+
 class ResultPage extends StatefulWidget {
   int score;
   ResultPage(this.score, {Key? key}) : super(key: key);
@@ -14,26 +14,9 @@ class _ResultPageState extends State<ResultPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xFF3C3279),
       body: Stack(
         children: [
-          Container(
-            height: 300,
-            padding: const EdgeInsets.only(top: 50, left: 20, right: 20),
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(70),
-                bottomRight: Radius.circular(60),
-              ),
-              gradient: LinearGradient(
-                colors: [
-                  Color(0xFF00002136),
-                  Color(0xFF104A57),
-                ],
-                begin: Alignment.bottomCenter,
-                end: Alignment.center,
-              ),
-            ),
-          ),
           Positioned(
             top: 30,
             left: 10,
@@ -81,31 +64,27 @@ class _ResultPageState extends State<ResultPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        SizedBox(
-                          width: double.infinity,
-                          child: Text(
-                            "Congratulations",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 40.0,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
+                        Image.asset(
+                          'images/mascot.png',
+                          width: 200,
+                          height: 200,
                         ),
-                        SizedBox(
-                          height: 45.0,
+                        const Text(
+                          "Congratulations",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 40.0,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                         Text(
                           "You Score is",
                           style: TextStyle(fontSize: 34.0),
                         ),
-                        SizedBox(
-                          height: 20.0,
-                        ),
                         Text(
                           "${widget.score}",
                           style: TextStyle(
-                            color: Colors.orange,
+                            color: Color(0xFF3C3279),
                             fontSize: 85.0,
                             fontWeight: FontWeight.bold,
                           ),
@@ -122,7 +101,7 @@ class _ResultPageState extends State<ResultPage> {
                                 ));
                           },
                           shape: StadiumBorder(),
-                          color: Colors.orange,
+                          color: Color(0xFF3C3279),
                           padding: EdgeInsets.all(18.0),
                           child: Text(
                             "Back To Menu",
