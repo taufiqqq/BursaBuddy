@@ -44,7 +44,7 @@ dependencies:
   like_button: ^2.0.5
   grouped_list: ^5.1.2
   intl: ^0.19.0
-
+  syncfusion_flutter_calendar: ^24.2.9
 dev_dependencies:
   flutter_test:
     sdk: flutter

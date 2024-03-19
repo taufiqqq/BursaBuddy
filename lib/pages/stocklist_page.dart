@@ -1,10 +1,11 @@
+import 'package:bijaktrade/model/coinModel.dart';
+import 'package:bijaktrade/model/stock.dart';
+import 'package:bijaktrade/pages/calendar_page.dart';
+import 'package:bijaktrade/pages/stock_page.dart';
+import 'package:bijaktrade/widgets/search_field.dart';
 import 'package:chart_sparkline/chart_sparkline.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:bijaktrade/model/coinModel.dart';
-import 'package:bijaktrade/model/stock.dart';
-import 'package:bijaktrade/pages/stock_page.dart';
-import 'package:bijaktrade/widgets/search_field.dart';
 
 class StockListPage extends StatefulWidget {
   const StockListPage({Key? key}) : super(key: key);
@@ -33,15 +34,16 @@ class _StockListPageState extends State<StockListPage> {
               bottomRight: Radius.circular(60),
             ),
             image: DecorationImage(
-                image: AssetImage('assets/images/bg.png'), fit: BoxFit.fitWidth, alignment: Alignment.topCenter)
-
-            ),
+                image: AssetImage('assets/images/bg.png'),
+                fit: BoxFit.fitWidth,
+                alignment: Alignment.topCenter)),
         child: FutureBuilder<List<CoinModel>?>(
           future: _coinMarketFuture,
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return Column(
-                children: [CustomHeader(
+                children: [
+                  CustomHeader(
                     onBackTap: () {
                       Navigator.pop(context);
                     },
@@ -53,7 +55,8 @@ class _StockListPageState extends State<StockListPage> {
               );
             } else if (snapshot.hasError) {
               return Column(
-                children: [CustomHeader(
+                children: [
+                  CustomHeader(
                     onBackTap: () {
                       Navigator.pop(context);
                     },
@@ -69,7 +72,7 @@ class _StockListPageState extends State<StockListPage> {
             } else {
               // Data has been fetched successfully
               stocks = [
-                Stock("MAYBANK", "Maybank Bhd" , snapshot.data![0]),
+                Stock("MAYBANK", "Maybank Bhd", snapshot.data![0]),
                 Stock("GAMUDA", "Gamuda Bhd", snapshot.data![1]),
                 Stock("RAPID", "Rapid Synergy Bhd", snapshot.data![2]),
                 Stock("MAXIS", "Maxis Bhd", snapshot.data![3]),
@@ -77,7 +80,8 @@ class _StockListPageState extends State<StockListPage> {
                 Stock("PHARMA", "Pharmaniaga Bhd", snapshot.data![5]),
                 Stock("AXIATA", "Axiata Group Bhd", snapshot.data![6]),
                 Stock("ENCORP", "Encorp Bhd", snapshot.data![7]),
-                Stock("CloutPT", "Cloudpoint Technology Bhd", snapshot.data![8]),
+                Stock(
+                    "CloutPT", "Cloudpoint Technology Bhd", snapshot.data![8]),
               ];
 
               return Column(
@@ -140,8 +144,12 @@ class _StockListPageState extends State<StockListPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(stock.name,
-                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15)),
-                    Text(stock.fullName, style: TextStyle(fontSize: 12),), // Assuming cm has a property 'name'
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 15)),
+                    Text(
+                      stock.fullName,
+                      style: TextStyle(fontSize: 12),
+                    ), // Assuming cm has a property 'name'
                   ],
                 ),
               ),
@@ -243,7 +251,8 @@ class CustomHeader extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     GestureDetector(
-                      child: Icon(Icons.arrow_back_rounded, color: Colors.white),
+                      child:
+                          Icon(Icons.arrow_back_rounded, color: Colors.white),
                       onTap: onBackTap,
                     )
                   ],
@@ -256,11 +265,18 @@ class CustomHeader extends StatelessWidget {
                     fontSize: 20,
                   ),
                 ),
-                Icon(
-                  Icons.more_horiz,
-                  size: 35.0,
-                  color: Colors.white,
-                ),
+                IconButton(
+                  icon: Icon(
+                    Icons.calendar_today,
+                    color: Colors.white,
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => CalendarPage()),
+                    );
+                  },
+                )
               ],
             ),
             SizedBox(height: 30),
