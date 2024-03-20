@@ -22,76 +22,124 @@ class _FeedPage extends State<FeedPage> {
     double myWidth = MediaQuery.of(context).size.width;
     Feed chosenFeed;
 
-    return Container(
-        child: Container(
-      height: myHeight * 0.8,
-      padding: const EdgeInsets.symmetric(vertical: 15),
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(40),
-          topRight: Radius.circular(40),
-        ),
-        color: Colors.white,
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(15.0),
-        child: Column(
-          children: [
-            Row(
-              children: [
-                Expanded(
-                  child: TextField(
-                    controller: feedController,
-                    decoration: const InputDecoration(
-                      hintText: "Share Your Thought",
-                      contentPadding: EdgeInsets.symmetric(
-                        vertical: 15.0, // Adjust the height as needed
-                        horizontal: 10.0,
-                      ),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(20),
+    return Scaffold(
+      backgroundColor: Color(0xFF3C3279),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Feed',
+                          style: TextStyle(
+                            fontSize: 20.0,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text("Latest", style: TextStyle(color: Colors.white)),
+                    SizedBox(width: 5),
+                    Icon(Icons.sort, color: Colors.white)
+                  ],
+                ),
+              ),
+              Container(
+                child: Container(
+                  child: Container(
+                    height: myHeight * 0.8,
+                    padding: const EdgeInsets.symmetric(vertical: 15),
+                    decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(40),
+                        topRight: Radius.circular(40),
+                      ),
+                      color: Colors.white,
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(15.0),
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Expanded(
+                                child: TextField(
+                                  controller: feedController,
+                                  decoration: const InputDecoration(
+                                    hintText: "Share Your Thought",
+                                    contentPadding: EdgeInsets.symmetric(
+                                      vertical: 15.0, // Adjust the height as needed
+                                      horizontal: 10.0,
+                                    ),
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(20),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 10.0,
+                              ),
+                              ElevatedButton(
+                                onPressed: () {
+                                  String feed = feedController.text.trim();
+                                  if (feed.isNotEmpty) {
+                                    setState(() {
+                                      feeds.add(Feed(feedText: feed));
+                                    });
+                                  }
+                                },
+                                child: Icon(
+                                  Icons.send,
+                                  color: Color(0xFF3C3279),
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizedBox(
+                            height: 20.0,
+                          ),
+                          feeds.isEmpty
+                              ? const Text("Still Empty . . .")
+                              : Container(
+                                  child: Expanded(
+                                    child: ListView.builder(
+                                      itemCount: feeds.length,
+                                      itemBuilder: (context, index) =>
+                                          getRow(index),
+                                    ),
+                                  ),
+                                )
+                        ],
                       ),
                     ),
                   ),
                 ),
-                SizedBox(
-                  width: 10.0,
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    String feed = feedController.text.trim();
-                    if (feed.isNotEmpty) {
-                      setState(() {
-                        feeds.add(Feed(feedText: feed));
-                      });
-                    }
-                  },
-                  child: Icon(
-                    Icons.send,
-                    color: Color(0xFF3C3279),
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 20.0,
-            ),
-            feeds.isEmpty
-                ? const Text("Still Empty . . .")
-                : Container(
-                    child: Expanded(
-                      child: ListView.builder(
-                        itemCount: feeds.length,
-                        itemBuilder: (context, index) => getRow(index),
-                      ),
-                    ),
-                  )
-          ],
+              ),
+            ],
+          ),
         ),
       ),
-    ));
+    );
   }
 
   Widget getRow(int index) {

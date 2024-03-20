@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:bijaktrade/model/stock.dart';
+import 'package:bijaktrade/pages/chatbot_page.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
@@ -448,6 +449,21 @@ class _StockPageState extends State<StockPage> {
             ),
           ),
         ),
+        Padding(
+          padding: const EdgeInsets.only(right: 20.0, bottom: 100),
+          child: Container(
+            alignment: Alignment.bottomRight,
+            child: GestureDetector(
+              child: Image.asset(
+                'assets/images/mascot_chat.png',
+                width: 50,
+              ),
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: ((context) => ChatbotPage(messageText: widget.selectStock.name))));
+              },
+            ),
+          ),
+        ),
         Container(
           alignment: Alignment.bottomCenter,
           child: Card(
@@ -498,7 +514,9 @@ class _StockPageState extends State<StockPage> {
                                     });
                                     Navigator.of(context).pop();
                                   },
-                                  child: Text('OK', style: TextStyle(color: Colors.green, fontSize: 20)),
+                                  child: Text('OK',
+                                      style: TextStyle(
+                                          color: Colors.green, fontSize: 20)),
                                 ),
                               ],
                             ),

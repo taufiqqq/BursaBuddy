@@ -1,4 +1,5 @@
 import 'package:bijaktrade/pages/calculator_page.dart';
+import 'package:bijaktrade/pages/my_profile_page.dart';
 import 'package:bijaktrade/pages/portfolio_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -15,9 +16,9 @@ class _ProfilePageState extends State<ProfilePage> {
 
   Widget buildSegmentedControlContent() {
     if (sliding == 0) {
-      return PortfolioPage();
+      return MyProfile();
     } else if (sliding == 1) {
-      return CalculatorPage();
+      return PortfolioPage();
     } else {
       return Container(); // Return an empty container by default or handle other cases
     }
@@ -38,11 +39,11 @@ class _ProfilePageState extends State<ProfilePage> {
                 Center(
                   child: CupertinoSlidingSegmentedControl(
                     children: {
-                      0: Text('Portfolio',
+                      0: Text('Profile',
                           style: TextStyle(
                               color:
                                   sliding == 1 ? Colors.white : Colors.black)),
-                      1: Text('Calculator',
+                      1: Text('Portfolio',
                           style: TextStyle(
                               color:
                                   sliding == 0 ? Colors.white : Colors.black)),

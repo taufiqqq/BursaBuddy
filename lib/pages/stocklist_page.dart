@@ -26,22 +26,22 @@ class _StockListPageState extends State<StockListPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(70),
-              bottomRight: Radius.circular(60),
-            ),
-            image: DecorationImage(
-                image: AssetImage('assets/images/bg.png'),
-                fit: BoxFit.fitWidth,
-                alignment: Alignment.topCenter)),
-        child: FutureBuilder<List<CoinModel>?>(
-          future: _coinMarketFuture,
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return Column(
+    return Container(
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(70),
+            bottomRight: Radius.circular(60),
+          ),
+          image: DecorationImage(
+              image: AssetImage('assets/images/bg.png'),
+              fit: BoxFit.fitWidth,
+              alignment: Alignment.topCenter)),
+      child: FutureBuilder<List<CoinModel>?>(
+        future: _coinMarketFuture,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Container(
+              child: Column(
                 children: [
                   CustomHeader(
                     onBackTap: () {
@@ -52,9 +52,11 @@ class _StockListPageState extends State<StockListPage> {
                     child: CircularProgressIndicator(),
                   ),
                 ],
-              );
-            } else if (snapshot.hasError) {
-              return Column(
+              ),
+            );
+          } else if (snapshot.hasError) {
+            return Container(
+              child: Column(
                 children: [
                   CustomHeader(
                     onBackTap: () {
@@ -68,23 +70,25 @@ class _StockListPageState extends State<StockListPage> {
                     ),
                   ),
                 ],
-              );
-            } else {
-              // Data has been fetched successfully
-              stocks = [
-                Stock("MAYBANK", "Maybank Bhd", snapshot.data![0]),
-                Stock("GAMUDA", "Gamuda Bhd", snapshot.data![1]),
-                Stock("RAPID", "Rapid Synergy Bhd", snapshot.data![2]),
-                Stock("MAXIS", "Maxis Bhd", snapshot.data![3]),
-                Stock("EDELTEQ", "Edelteq Holdings Bhd", snapshot.data![4]),
-                Stock("PHARMA", "Pharmaniaga Bhd", snapshot.data![5]),
-                Stock("AXIATA", "Axiata Group Bhd", snapshot.data![6]),
-                Stock("ENCORP", "Encorp Bhd", snapshot.data![7]),
-                Stock(
-                    "CloutPT", "Cloudpoint Technology Bhd", snapshot.data![8]),
-              ];
+              ),
+            );
+          } else {
+            // Data has been fetched successfully
+            stocks = [
+              Stock("MAYBANK", "Maybank Bhd", snapshot.data![0]),
+              Stock("GAMUDA", "Gamuda Bhd", snapshot.data![1]),
+              Stock("RAPID", "Rapid Synergy Bhd", snapshot.data![2]),
+              Stock("MAXIS", "Maxis Bhd", snapshot.data![3]),
+              Stock("EDELTEQ", "Edelteq Holdings Bhd", snapshot.data![4]),
+              Stock("PHARMA", "Pharmaniaga Bhd", snapshot.data![5]),
+              Stock("AXIATA", "Axiata Group Bhd", snapshot.data![6]),
+              Stock("ENCORP", "Encorp Bhd", snapshot.data![7]),
+              Stock("CloutPT", "Cloudpoint Technology Bhd", snapshot.data![8]),
+            ];
 
-              return Column(
+            return Container(
+              height: MediaQuery.of(context).size.height * 0.9,
+              child: Column(
                 children: [
                   CustomHeader(
                     onBackTap: () {
@@ -103,10 +107,10 @@ class _StockListPageState extends State<StockListPage> {
                     ),
                   ),
                 ],
-              );
-            }
-          },
-        ),
+              ),
+            );
+          }
+        },
       ),
     );
   }
@@ -238,62 +242,23 @@ class CustomHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Container(
-        padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    GestureDetector(
-                      child:
-                          Icon(Icons.arrow_back_rounded, color: Colors.white),
-                      onTap: onBackTap,
-                    )
-                  ],
-                ),
-                Text(
-                  "Stocks",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                  ),
-                ),
-                IconButton(
-                  icon: Icon(
-                    Icons.calendar_today,
-                    color: Colors.white,
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => CalendarPage()),
-                    );
-                  },
-                )
-              ],
-            ),
-            SizedBox(height: 30),
-            SearchTextField(),
-            SizedBox(height: 5),
-            Row(
-              children: [
-                SizedBox(
-                  width: 5,
-                ),
-                Text("Global", style: TextStyle(color: Colors.white)),
-                Icon(Icons.arrow_drop_down, color: Colors.white)
-              ],
-            ),
-            SizedBox(height: 10),
-          ],
-        ),
+    return Container(
+      padding: const EdgeInsets.only(left: 20, right: 20),
+      child: Column(
+        children: [
+          SearchTextField(),
+          SizedBox(height: 5),
+          Row(
+            children: [
+              SizedBox(
+                width: 5,
+              ),
+              Text("Global", style: TextStyle(color: Colors.white)),
+              Icon(Icons.arrow_drop_down, color: Colors.white)
+            ],
+          ),
+          SizedBox(height: 10),
+        ],
       ),
     );
   }

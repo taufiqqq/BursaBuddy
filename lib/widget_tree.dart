@@ -1,5 +1,7 @@
 import 'package:bijaktrade/pages/community_page.dart';
+import 'package:bijaktrade/pages/feed_page.dart';
 import 'package:bijaktrade/pages/stocklist_page.dart';
+import 'package:bijaktrade/pages/trade_page.dart';
 import 'package:flutter/material.dart';
 
 import 'pages/homepage.dart';
@@ -14,13 +16,13 @@ class WidgetTree extends StatefulWidget {
 }
 
 class _WidgetTreeState extends State<WidgetTree> {
-  int currentPage = 0;
+  int currentPage = 2;
 
   List<Widget> pages = [
     HomePage(),
+    TradePage(),
     MainLearnPage(),
-    StockListPage(),
-    CommunityPage(),
+    FeedPage(),
     ProfilePage()
   ];
 
@@ -31,18 +33,18 @@ class _WidgetTreeState extends State<WidgetTree> {
         body: pages.elementAt(currentPage),
         floatingActionButton: FloatingActionButton(
             child: Icon(
-              Icons.show_chart_sharp,
-              color: Colors.white,
+              Icons.my_library_books_outlined,
+              color: currentPage==2 ?  Colors.white : Colors.black ,
+              size: 30
             ),
             onPressed: () {
               // Navigate to the Trade page
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => StockListPage()),
-              );
+              setState(() {
+                currentPage = 2;
+              });
             },
             shape: const CircleBorder(),
-            backgroundColor: Color(0xFF3C3279)),
+            backgroundColor: currentPage==2 ?  Colors.deepPurple : Colors.white ),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         bottomNavigationBar: NavigationBar(
           destinations: const [
@@ -51,13 +53,13 @@ class _WidgetTreeState extends State<WidgetTree> {
               label: 'Home',
             ),
             NavigationDestination(
-              icon: Icon(Icons.book),
-              label: 'Learn',
+              icon: Icon(Icons.candlestick_chart,),
+              label: 'Trade',
             ),
             SizedBox(
                 child: Padding(
                     padding: EdgeInsets.only(top: 35),
-                    child: Center(child: Text("Trade")))),
+                    child: Center(child: Text("Learn")))),
             NavigationDestination(
               icon: Icon(Icons.groups),
               label: 'Community',

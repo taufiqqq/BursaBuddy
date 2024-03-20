@@ -3,7 +3,8 @@ import 'package:grouped_list/grouped_list.dart';
 import 'package:intl/intl.dart';
 
 class ChatbotPage extends StatefulWidget {
-  const ChatbotPage({Key? key}) : super(key: key);
+  const ChatbotPage({Key? key, this.messageText}) : super(key: key);
+  final String? messageText;
 
   @override
   _ChatbotPageState createState() => _ChatbotPageState();
@@ -11,6 +12,35 @@ class ChatbotPage extends StatefulWidget {
 
 class _ChatbotPageState extends State<ChatbotPage> {
   TextEditingController _textEditingController = TextEditingController();
+  late List<Message> messages; // Declare messages variable
+
+  @override
+  void initState() {
+    super.initState();
+    // Initialize messages list here
+    messages = [
+      Message(
+        text: "Hello",
+        date: DateTime.now().subtract(Duration(days: 3, minutes: 3)),
+        isSentByMe: true,
+      ),
+      Message(
+        text: "Tell Me Anything",
+        date: DateTime.now().subtract(Duration(days: 3, minutes: 2)),
+        isSentByMe: false,
+      ),
+      Message(
+        text: widget.messageText ?? "Hello", // Use widget.messageText here
+        date: DateTime.now().subtract(Duration(minutes: 2)),
+        isSentByMe: true,
+      ),
+      Message(
+        text: "Yes",
+        date: DateTime.now().subtract(Duration(minutes: 1)),
+        isSentByMe: false,
+      ),
+    ];
+  }
 
   @override
   void dispose() {
@@ -68,12 +98,13 @@ class _ChatbotPageState extends State<ChatbotPage> {
                   elevation: 8,
                   child: Padding(
                     padding: const EdgeInsets.all(12),
-                    child: Text(message.text),
+                    child: widget.messageText!=null && message.text=="Yes" ? Text("In this current situation, it is better to buy ${widget.messageText} because it is profitable") :  Text(message.text) ,
                   ),
                 ),
               ),
             ),
           ),
+          
           Row(
             children: [
               Expanded(
@@ -134,16 +165,3 @@ class Message {
     required this.isSentByMe,
   });
 }
-
-List<Message> messages = [
-  Message(
-    text: "Hello",
-    date: DateTime.now().subtract(Duration(days: 3, minutes: 3)),
-    isSentByMe: false,
-  ),
-  Message(
-    text: "Tell Me Anything",
-    date: DateTime.now().subtract(Duration(minutes: 1)),
-    isSentByMe: true,
-  ),
-];

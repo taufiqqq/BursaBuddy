@@ -16,8 +16,7 @@ class MyApp extends StatelessWidget {
       title: 'BursaBuddy+',
       theme: ThemeData(
         useMaterial3: true,
-        primarySwatch: Colors.blue,
-        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue), 
+        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.deepPurple), 
         scaffoldBackgroundColor: Color(0xFFF2F1EE),
       ),
       home: WidgetTree(),
