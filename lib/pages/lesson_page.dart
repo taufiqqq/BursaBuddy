@@ -79,19 +79,11 @@ class _HomePageState extends State<LessonPage> with TickerProviderStateMixin {
             height: 300,
             padding: const EdgeInsets.only(top: 50, left: 20, right: 20),
             decoration: const BoxDecoration(
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(70),
-                bottomRight: Radius.circular(60),
-              ),
-              gradient: LinearGradient(
-                colors: [
-                  Color(0xFF00002136),
-                  Color(0xFF104A57),
-                ],
-                begin: Alignment.bottomCenter,
-                end: Alignment.center,
-              ),
-            ),
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(70),
+                  bottomRight: Radius.circular(60),
+                ),
+                color: Color(0xFF3C3279)),
           ),
           Positioned(
             top: 30,
@@ -168,11 +160,6 @@ class _HomePageState extends State<LessonPage> with TickerProviderStateMixin {
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
-                                  Image.asset(
-                                    'assets/images/breakout.png',
-                                    width: 250,
-                                    height: 250,
-                                  ),
                                   Text(
                                     "Violation of Trend Line, Support or Resistance, or previous reversal point.",
                                     style: TextStyle(
@@ -191,7 +178,11 @@ class _HomePageState extends State<LessonPage> with TickerProviderStateMixin {
                             ),
                           )
                         : Container(
-                            child: Text("data"),
+                            child: Image.asset(
+                              'assets/images/breakout.png',
+                              width: 250,
+                              height: 250,
+                            ),
                           ),
                   ),
                 ),

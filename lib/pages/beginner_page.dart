@@ -18,14 +18,7 @@ class BeginnerPage extends StatelessWidget {
                 bottomLeft: Radius.circular(70),
                 bottomRight: Radius.circular(60),
               ),
-              gradient: LinearGradient(
-                colors: [
-                  Color(0xFF00002136),
-                  Color(0xFF104A57),
-                ],
-                begin: Alignment.bottomCenter,
-                end: Alignment.center,
-              ),
+              color: Color(0xFF3C3279),
             ),
           ),
           Positioned(

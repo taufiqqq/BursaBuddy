@@ -65,7 +65,7 @@ class _ResultPageState extends State<ResultPage> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Image.asset(
-                          'images/mascot.png',
+                          'assets/images/mascot.png',
                           width: 200,
                           height: 200,
                         ),

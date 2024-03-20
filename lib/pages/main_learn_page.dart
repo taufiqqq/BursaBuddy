@@ -20,14 +20,7 @@ class MainLearnPage extends StatelessWidget {
                   bottomLeft: Radius.circular(70),
                   bottomRight: Radius.circular(60),
                 ),
-                gradient: LinearGradient(
-                  colors: [
-                    Color(0xFF00002136),
-                    Color(0xFF104A57),
-                  ],
-                  begin: Alignment.bottomCenter,
-                  end: Alignment.center,
-                ),
+                color: Color(0xFF3C3279),
               ),
               child: Column(
                 children: [
@@ -57,7 +50,7 @@ class MainLearnPage extends StatelessWidget {
                       Column(
                         children: [
                           Text(
-                            'Progress :',
+                            'Lesson Progress :',
                             style: TextStyle(
                               fontSize: 20.0,
                               color: Colors.white,
@@ -68,7 +61,7 @@ class MainLearnPage extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(height: 30),
+                  SizedBox(height: 10),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8),
                     child: Container(
