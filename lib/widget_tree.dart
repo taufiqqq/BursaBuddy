@@ -42,7 +42,7 @@ class _WidgetTreeState extends State<WidgetTree> {
               );
             },
             shape: const CircleBorder(),
-            backgroundColor: Color(0xFF234891)),
+            backgroundColor: Color(0xFF3C3279)),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         bottomNavigationBar: NavigationBar(
           destinations: const [

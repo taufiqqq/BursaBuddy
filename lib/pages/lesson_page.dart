@@ -118,7 +118,7 @@ class _HomePageState extends State<LessonPage> with TickerProviderStateMixin {
                   alignment: FractionalOffset.center,
                   transform: Matrix4.identity()
                     ..setEntry(3, 2, 0.0015)
-                    ..rotateY(pi * _animation.value),
+                    ..rotateY(2 * pi * _animation.value),
                   child: Container(
                     height: 550,
                     width: 300,

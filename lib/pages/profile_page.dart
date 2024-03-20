@@ -25,7 +25,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        backgroundColor: Color.fromARGB(255, 9, 81, 94),
+        backgroundColor: Color(0xFF3C3279),
         body: ListView(
           children: [
             const SizedBox(
@@ -33,7 +33,8 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [SizedBox(width: 24),
+              children: [
+                SizedBox(width: 24),
                 Center(
                   child: CupertinoSlidingSegmentedControl(
                     children: {

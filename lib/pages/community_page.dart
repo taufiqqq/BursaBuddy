@@ -1,6 +1,4 @@
-import 'package:bijaktrade/pages/calculator_page.dart';
 import 'package:bijaktrade/pages/feed_page.dart';
-import 'package:bijaktrade/pages/portfolio_page.dart';
 import 'package:bijaktrade/pages/trader_ranking.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +25,7 @@ class _CommunityPageState extends State<CommunityPage> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        backgroundColor: Color.fromARGB(255, 9, 81, 94),
+        backgroundColor: Color(0xFF3C3279),
         body: ListView(
           children: [
             const SizedBox(

@@ -68,7 +68,10 @@ class _FeedPage extends State<FeedPage> {
                       });
                     }
                   },
-                  child: Icon(Icons.send),
+                  child: Icon(
+                    Icons.send,
+                    color: Color(0xFF3C3279),
+                  ),
                 ),
               ],
             ),
@@ -143,7 +146,9 @@ class _FeedPage extends State<FeedPage> {
                       GestureDetector(
                         child: Icon(Icons.comment),
                         onTap: () {
-                          Navigator.of(context).push(MaterialPageRoute(builder: (context) => CommentFeedPage(feed: feeds[index])));
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) =>
+                                  CommentFeedPage(feed: feeds[index])));
                         },
                       ),
                       SizedBox(width: 15),
