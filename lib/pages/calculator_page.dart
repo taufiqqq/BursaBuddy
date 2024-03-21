@@ -1,48 +1,60 @@
 import 'package:flutter/material.dart';
 
 class CalculatorPage extends StatefulWidget {
-  const CalculatorPage({super.key});
+  const CalculatorPage({Key? key}) : super(key: key);
 
   @override
   State<CalculatorPage> createState() => _CalculatorPageState();
 }
 
 class _CalculatorPageState extends State<CalculatorPage> {
-  TextEditingController pricePurchasedController = TextEditingController();
-  TextEditingController shareHeldController = TextEditingController();
-  TextEditingController brokerageController = TextEditingController();
-  TextEditingController minBrokerageController = TextEditingController();
-  TextEditingController priceSoldController = TextEditingController();
-  TextEditingController taxedController = TextEditingController();
-  TextEditingController taxExemptController = TextEditingController();
+  TextEditingController NOSController = TextEditingController();
+  TextEditingController BPController = TextEditingController();
+  TextEditingController BCController = TextEditingController();
+  TextEditingController NBPController = TextEditingController();
+  TextEditingController SPController = TextEditingController();
+  TextEditingController SCController = TextEditingController();
+  TextEditingController NSPController = TextEditingController();
+  TextEditingController ProfitController = TextEditingController();
+  TextEditingController ROIController = TextEditingController();
+  TextEditingController Break_EvenController = TextEditingController();
 
-  double shareHeld = 0.0;
-  double pricePurchased = 0.0;
-  double brokerage = 0.0;
-  double minBrokerage = 0.0;
-  double priceSold = 0.0;
-  double taxed = 0.0;
-  double taxExempt = 0.0;
+  double NOS = 0.0;
+  double BP = 0.0;
+  double BC = 0.0;
+  double NBP = 0.0;
+  double SP = 0.0;
+  double SC = 0.0;
+  double NSP = 0.0;
 
-  double pricePurchasedPerShare = 0.0;
-  double totalGrossProfitLoss = 0.0;
-  double lessBuyingAndSellingBrokerage = 0.0;
-  double lessClearingFees = 0.0;
-  double lessStampDuties = 0.0;
-  double netProfitLoss = 0.0;
-  double investmentChangePercentage = 0.0;
-  double netDividend = 0.0;
+  double Profit = 0.0;
+  double ROI = 0.0;
+  double Break_Even = 0.0;
+
+  bool buyingCommissionIsPercentage = true;
+  bool sellingCommissionIsPercentage = true;
+
+  @override
+  void initState() {
+    super.initState();
+    // Add listeners to input fields to calculate NBP and NSP automatically
+    NOSController.addListener(_calculateValues);
+    BPController.addListener(_calculateValues);
+    BCController.addListener(_calculateValues);
+    SPController.addListener(_calculateValues);
+    SCController.addListener(_calculateValues);
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SingleChildScrollView(
       child: Column(
         children: [
           // Title Container
           Container(
             alignment: Alignment.center,
             child: Text(
-              "Bursa Investment Calculator",
+              "Investment Calculator",
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 20,
@@ -57,61 +69,123 @@ class _CalculatorPageState extends State<CalculatorPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Profit & Loss Calculation
+                // Input Fields
+                NumericInputField(labelText: 'Number of shares', controller: NOSController),
+                SizedBox(height: 16),
                 Text(
-                  "Profit & Loss Calculation",
+                  "Purchase of shares",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 16,
+                    fontSize: 24,
                   ),
                 ),
-                SizedBox(height: 8),
-                // Input Fields
-                NumericInputField(labelText: 'Price Purchased (RM)', controller: pricePurchasedController),
-                NumericInputField(labelText: 'Share Held (Units)', controller: shareHeldController),
-                NumericInputField(labelText: 'Brokerage (%)', controller: brokerageController),
-                NumericInputField(labelText: 'Minimum Brokerage (RM)', controller: minBrokerageController),
-                NumericInputField(labelText: 'Price Sold (RM)', controller: priceSoldController),
+                NumericInputField(labelText: 'Buying Price (RM)', controller: BPController),
+                NumericInputField(labelText: buyingCommissionIsPercentage ? 'Buying Commission (%)' : 'Buying Commission (RM)', controller: BCController),
+                Row(
+                  children: [
+                    Radio(
+                      value: true,
+                      groupValue: buyingCommissionIsPercentage,
+                      onChanged: (value) {
+                        setState(() {
+                          buyingCommissionIsPercentage = value as bool;
+                          _calculateValues();
+                        });
+                      },
+                    ),
+                    Text('%',
+                      style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                      ),
+                    ),
+                    Radio(
+                      value: false,
+                      groupValue: buyingCommissionIsPercentage,
+                      onChanged: (value) {
+                        setState(() {
+                          buyingCommissionIsPercentage = value as bool;
+                          _calculateValues();
+                        });
+                      },
+                    ),
+                    Text('RM',
+                      style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                      ),
+                    ),
+                  ],
+                ),
+                NumericInputField(labelText: 'Net Buying Price (RM)', controller: NBPController),
                 SizedBox(height: 16),
                 // Gross Dividend Per Share
                 Text(
-                  "Gross Dividend Per Share",
+                  "Selling Shares",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 16,
+                    fontSize: 24,
                   ),
                 ),
                 SizedBox(height: 8),
                 // Input Fields
-                NumericInputField(labelText: 'Taxed (RM)', controller: taxedController),
-                NumericInputField(labelText: 'Tax Exempt (RM)', controller: taxExemptController),
-                SizedBox(height: 16),
-                // Output Fields
-                if (pricePurchasedPerShare != 0.0 || totalGrossProfitLoss != 0.0 || lessBuyingAndSellingBrokerage != 0.0 || lessClearingFees != 0.0 || lessStampDuties != 0.0 || netProfitLoss != 0.0 || investmentChangePercentage != 0.0 || netDividend != 0.0) ...[
-                  Text(
-                    "Output",
-                    style: TextStyle(
+                NumericInputField(labelText: 'Selling Price (RM)', controller: SPController),
+                NumericInputField(labelText: sellingCommissionIsPercentage ? 'Selling Commission (%)' : 'Selling Commission (RM)', controller: SCController),
+                Row(
+                  children: [
+                    Radio(
+                      value: true,
+                      groupValue: sellingCommissionIsPercentage,
+                      onChanged: (value) {
+                        setState(() {
+                          sellingCommissionIsPercentage = value as bool;
+                          _calculateValues();
+                        });
+                      },
+                    ),
+                    Text('%',
+                      style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 16,
+                      ),
                     ),
+                    Radio(
+                      value: false,
+                      groupValue: sellingCommissionIsPercentage,
+                      onChanged: (value) {
+                        setState(() {
+                          sellingCommissionIsPercentage = value as bool;
+                          _calculateValues();
+                        });
+                      },
+                    ),
+                    Text('RM',
+                      style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                      ),
+                    ),
+                  ],
+                ),
+                //add a radio button besides the buying commission (%/RM)
+                NumericInputField(labelText: 'Net Selling Price (RM)', controller: NSPController),
+                SizedBox(height: 16),
+                Text(
+                  "Investment Performance",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 24,
                   ),
-                  SizedBox(height: 8),
+                ),
+                SizedBox(height: 8),
                   // Output Fields
-                  Column(
-                    children: [
-                      OutputTextField(labelText: "Share Held (Units)", value: shareHeld.toStringAsFixed(2)),
-                      OutputTextField(labelText: "Price Purchased Per Share (RM)", value: pricePurchasedPerShare.toStringAsFixed(2)),
-                      OutputTextField(labelText: "Price Sold (RM)", value: priceSold.toStringAsFixed(2)),
-                      OutputTextField(labelText: "Total Gross Profit (Loss) On These Shares (RM)", value: totalGrossProfitLoss.toStringAsFixed(2)),
-                      OutputTextField(labelText: "Less Buying And Selling Brokerage (RM)", value: lessBuyingAndSellingBrokerage.toStringAsFixed(2)),
-                      OutputTextField(labelText: "Less Clearing Fees (RM)", value: lessClearingFees.toStringAsFixed(2)),
-                      OutputTextField(labelText: "Less Stamp Duties (RM)", value: lessStampDuties.toStringAsFixed(2)),
-                      OutputTextField(labelText: "Net Profit (Loss) (RM)", value: netProfitLoss.toStringAsFixed(2)),
-                      OutputTextField(labelText: "As A Percentage, Your Investment Has Changed (%)", value: investmentChangePercentage.toStringAsFixed(2)),
-                      OutputTextField(labelText: "Net Dividend (RM)", value: netDividend.toStringAsFixed(2)),
-                    ],
-                  ),
-                ],
+                Column(
+                  children: [
+                    NumericInputField(labelText: "Profit (RM)", controller: ProfitController),
+                    NumericInputField(labelText: "Return On Investment (ROI)", controller: ROIController),
+                    NumericInputField(labelText: "Break-even Selling Price", controller: Break_EvenController),
+                  ],
+                ),
                 SizedBox(height: 16),
                 // Reset and Calculate Buttons
                 Row(
@@ -122,11 +196,12 @@ class _CalculatorPageState extends State<CalculatorPage> {
                       child: Text('Reset'),
                     ),
                     ElevatedButton(
-                      onPressed: _calculateValues,
+                      onPressed: () {}, // Empty onPressed for the Calculate button since values are updated automatically
                       child: Text('Calculate'),
                     ),
                   ],
                 ),
+                // The commented code from your previous build method goes here
               ],
             ),
           ),
@@ -137,44 +212,54 @@ class _CalculatorPageState extends State<CalculatorPage> {
 
   void _calculateValues() {
     setState(() {
-      shareHeld = double.tryParse(shareHeldController.text) ?? 0.0;
-      pricePurchased = double.tryParse(pricePurchasedController.text) ?? 0.0;
-      brokerage = double.tryParse(brokerageController.text) ?? 0.0;
-      minBrokerage = double.tryParse(minBrokerageController.text) ?? 0.0;
-      priceSold = double.tryParse(priceSoldController.text) ?? 0.0;
-      taxed = double.tryParse(taxedController.text) ?? 0.0;
-      taxExempt = double.tryParse(taxExemptController.text) ?? 0.0;
+      NOS = double.tryParse(NOSController.text) ?? 0.0;
+      BP = double.tryParse(BPController.text) ?? 0.0;
+      BC = double.tryParse(BCController.text) ?? 0.0;
+      SP = double.tryParse(SPController.text) ?? 0.0;
+      SC = double.tryParse(SCController.text) ?? 0.0;
 
       // Perform calculations
-      pricePurchasedPerShare = pricePurchased / shareHeld; // bursa punya salah, im better
-      totalGrossProfitLoss = (priceSold - pricePurchased) * shareHeld; 
-      lessBuyingAndSellingBrokerage = 0.0; // idk how 
-      lessClearingFees = 0.0; // idk how calculation
-      lessStampDuties = 0.0; // idk the calculation
-      netProfitLoss = totalGrossProfitLoss - lessBuyingAndSellingBrokerage - lessClearingFees - lessStampDuties; //tak complete sebab tak tau lessClearingFees and lessStampDuties tu kira macam mana, i think.
-      investmentChangePercentage = pricePurchased != 0 ? ((priceSold - pricePurchased) / pricePurchased) * 100 : 0.0; //idk if the calculations are correct or not but value hampir sama dengan bursa
-      netDividend = 0.0; // idk how...
+      if (buyingCommissionIsPercentage) {
+        BC = ((NOS * BP) * (BC / 100));
+      }
+      if (sellingCommissionIsPercentage) {
+        SC = ((NOS * SP) * (SC / 100));
+      }
+      Profit = ((SP * NOS) - SC) - ((BP * NOS) + BC);
+      ROI = (Profit / ((BP * NOS) + BC)) * 100;
+
+      // Calculate Net Buying Price (NBP) and Net Selling Price (NSP)
+      NBP = (NOS * BP) + BC;
+      NSP = (NOS * SP) - SC;
+
+      // Check if NOS is not zero to avoid division by zero
+      if (NOS != 0) {
+        Break_Even = ((BP * NOS) + BC) / (NOS * (SC/NOS * SP));// salah so betulkan nanti
+      } else {
+        Break_Even = 0.0; // Set to default value if NOS is zero
+      }
+      // Update text fields for NBP and NSP
+      NBPController.text = NBP.toStringAsFixed(2);
+      NSPController.text = NSP.toStringAsFixed(2);
+      ProfitController.text = Profit.toStringAsFixed(2);
+      ROIController.text = ROI.toStringAsFixed(3);
+      Break_EvenController.text = Break_Even.toStringAsFixed(2);
     });
   }
 
   void _resetValues() {
     setState(() {
-      pricePurchasedController.clear();
-      shareHeldController.clear();
-      brokerageController.clear();
-      minBrokerageController.clear();
-      priceSoldController.clear();
-      taxedController.clear();
-      taxExemptController.clear();
+      NOSController.clear();
+      BPController.clear();
+      BCController.clear();
+      NBPController.clear();
+      SPController.clear();
+      SCController.clear();
+      NSPController.clear();
 
-      pricePurchasedPerShare = 0.0;
-      totalGrossProfitLoss = 0.0;
-      lessBuyingAndSellingBrokerage = 0.0;
-      lessClearingFees = 0.0;
-      lessStampDuties = 0.0;
-      netProfitLoss = 0.0;
-      investmentChangePercentage = 0.0;
-      netDividend = 0.0;
+      Profit = 0.0;
+      ROI = 0.0;
+      Break_Even = 0.0;
     });
   }
 }
