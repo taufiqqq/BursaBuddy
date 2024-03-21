@@ -1,5 +1,6 @@
 import 'package:bijaktrade/pages/community_page.dart';
 import 'package:bijaktrade/pages/feed_page.dart';
+import 'package:bijaktrade/pages/home_fyp.dart';
 import 'package:bijaktrade/pages/stocklist_page.dart';
 import 'package:bijaktrade/pages/trade_page.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +20,7 @@ class _WidgetTreeState extends State<WidgetTree> {
   int currentPage = 2;
 
   List<Widget> pages = [
-    HomePage(),
+    HomeFYP(),
     TradePage(),
     MainLearnPage(),
     FeedPage(),
