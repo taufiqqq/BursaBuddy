@@ -183,7 +183,7 @@ class _CalculatorPageState extends State<CalculatorPage> {
                   children: [
                     NumericInputField(labelText: "Profit (RM)", controller: ProfitController),
                     NumericInputField(labelText: "Return On Investment (ROI)", controller: ROIController),
-                    NumericInputField(labelText: "Break-even Selling Price", controller: Break_EvenController),
+                    NumericInputField(labelText: "Break-even Selling Price (RM)", controller: Break_EvenController),
                   ],
                 ),
                 SizedBox(height: 16),
@@ -194,10 +194,6 @@ class _CalculatorPageState extends State<CalculatorPage> {
                     ElevatedButton(
                       onPressed: _resetValues,
                       child: Text('Reset'),
-                    ),
-                    ElevatedButton(
-                      onPressed: () {}, // Empty onPressed for the Calculate button since values are updated automatically
-                      child: Text('Calculate'),
                     ),
                   ],
                 ),
