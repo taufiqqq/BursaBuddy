@@ -234,7 +234,7 @@ class _CalculatorPageState extends State<CalculatorPage> {
 
       // Check if NOS is not zero to avoid division by zero
       if (NOS != 0) {
-        Break_Even = ((BP * NOS) + BC) / (NOS * (SC/NOS * SP));// salah so betulkan nanti
+        Break_Even = ((BP * NOS) + BC) / (NOS * (1 - (SC/(NOS * SP))));
       } else {
         Break_Even = 0.0; // Set to default value if NOS is zero
       }
