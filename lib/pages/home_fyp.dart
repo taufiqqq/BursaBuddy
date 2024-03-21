@@ -34,8 +34,9 @@ class HomeFYP extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
+                    SizedBox(width: 24),
                     Text(
-                      'BursaBuddy+ For You',
+                      'FOR YOU',
                       style: TextStyle(
                         fontSize: 22,
                         fontWeight: FontWeight.w600,
