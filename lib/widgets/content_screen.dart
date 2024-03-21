@@ -75,7 +75,7 @@ class _ContentScreenState extends State<ContentScreen> {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     CircleAvatar(
-                      radius: 20,
+                      radius: 25,
                       backgroundImage:
                           AssetImage('assets/images/user_picture.jpg'),
                     ),
