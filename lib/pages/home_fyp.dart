@@ -1,6 +1,8 @@
+import 'package:bijaktrade/pages/record_video.dart';
 import 'package:bijaktrade/widgets/content_screen.dart';
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class HomeFYP extends StatelessWidget {
   final List<String> videos = [
@@ -39,7 +41,14 @@ class HomeFYP extends StatelessWidget {
                         fontWeight: FontWeight.w600,
                       ),
                     ),
-                    Icon(Icons.camera_alt),
+                    GestureDetector(
+                        onTap: () {
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => RecordVideo()));
+                        },
+                        child: Icon(Icons.camera_alt)),
                   ],
                 ),
               ),

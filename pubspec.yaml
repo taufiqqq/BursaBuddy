@@ -48,6 +48,8 @@ dependencies:
   video_player: ^2.8.3
   chewie: ^1.7.5
   card_swiper: ^3.0.1
+  camera: ^0.10.5+9
+  image_picker: ^1.0.7
 dev_dependencies:
   flutter_test:
     sdk: flutter
