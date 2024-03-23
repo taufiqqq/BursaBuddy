@@ -14,7 +14,7 @@ class MainLearnPage extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              height: 300,
+              height: 250,
               padding: const EdgeInsets.only(top: 50, left: 20, right: 20),
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.only(
