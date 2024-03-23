@@ -65,7 +65,7 @@ class _CalculatorPageState extends State<CalculatorPage> {
           ),
           // Input And Output of Calculator Container
           Container(
-            padding: EdgeInsets.all(8),
+            padding: EdgeInsets.all(20),
             decoration: const BoxDecoration(
                           borderRadius: BorderRadius.only(
                             topLeft: Radius.circular(40),
@@ -187,7 +187,7 @@ class _CalculatorPageState extends State<CalculatorPage> {
                 Column(
                   children: [
                     NumericInputField(labelText: "Profit (RM)", controller: ProfitController),
-                    NumericInputField(labelText: "Return On Investment (ROI)", controller: ROIController),
+                    NumericInputField(labelText: "Return On Investment (ROI) (%)", controller: ROIController),
                     NumericInputField(labelText: "Break-even Selling Price (RM)", controller: Break_EvenController),
                   ],
                 ),
