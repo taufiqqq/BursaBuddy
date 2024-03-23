@@ -65,8 +65,12 @@ class _CalculatorPageState extends State<CalculatorPage> {
           ),
           // Input And Output of Calculator Container
           Container(
-            decoration: BoxDecoration(border: Border.all(), borderRadius: BorderRadius.circular(10), color: Colors.white),
             padding: EdgeInsets.all(8),
+            decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(40),
+                            topRight: Radius.circular(40),),
+                          color: Colors.white),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
