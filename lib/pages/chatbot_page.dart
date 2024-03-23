@@ -30,14 +30,14 @@ class _ChatbotPageState extends State<ChatbotPage> {
         isSentByMe: false,
       ),
       Message(
-        text: widget.messageText ?? "Hello", // Use widget.messageText here
-        date: DateTime.now().subtract(Duration(minutes: 2)),
+        text: "Hello", // Use widget.messageText here
+        date: DateTime.now().subtract(Duration(minutes: 4)),
         isSentByMe: true,
       ),
       Message(
-        text: "Yes",
-        date: DateTime.now().subtract(Duration(minutes: 1)),
-        isSentByMe: false,
+        text: widget.messageText ?? "Hello", // Use widget.messageText here
+        date: DateTime.now().subtract(Duration(minutes: 2)),
+        isSentByMe: true,
       ),
     ];
   }
@@ -98,13 +98,14 @@ class _ChatbotPageState extends State<ChatbotPage> {
                   elevation: 8,
                   child: Padding(
                     padding: const EdgeInsets.all(12),
-                    child: widget.messageText!=null && message.text=="Yes" ? Text("In this current situation, it is better to buy ${widget.messageText} because it is profitable") :  Text(message.text) ,
+                    child: widget.messageText != null && message.text == "Yes"
+                        ? Text("${widget.messageText}")
+                        : Text(message.text),
                   ),
                 ),
               ),
             ),
           ),
-          
           Row(
             children: [
               Expanded(

@@ -463,7 +463,7 @@ class _StockPageState extends State<StockPage> {
                     context,
                     MaterialPageRoute(
                         builder: ((context) => ChatbotPage(
-                            messageText: widget.selectStock.name))));
+                            messageText: "In this current situation, it is better to hold from buying ${widget.selectStock.name} stock because as we did a calculation on the stock analysis, it might decrease 30% in the next 1 hour."))));
               },
             ),
           ),
