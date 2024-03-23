@@ -53,6 +53,7 @@ class _CalculatorPageState extends State<CalculatorPage> {
           // Title Container
           Container(
             alignment: Alignment.center,
+            padding: EdgeInsets.all(8),
             child: Text(
               "Investment Calculator",
               style: TextStyle(
@@ -64,8 +65,8 @@ class _CalculatorPageState extends State<CalculatorPage> {
           ),
           // Input And Output of Calculator Container
           Container(
-            color: Colors.white,
-            padding: EdgeInsets.all(16),
+            decoration: BoxDecoration(border: Border.all(), borderRadius: BorderRadius.circular(10), color: Colors.white),
+            padding: EdgeInsets.all(8),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -252,10 +253,9 @@ class _CalculatorPageState extends State<CalculatorPage> {
       SPController.clear();
       SCController.clear();
       NSPController.clear();
-
-      Profit = 0.0;
-      ROI = 0.0;
-      Break_Even = 0.0;
+      ProfitController.clear();
+      ROIController.clear();
+      Break_EvenController.clear();
     });
   }
 }
