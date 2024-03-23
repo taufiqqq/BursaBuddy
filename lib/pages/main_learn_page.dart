@@ -161,51 +161,54 @@ class MainLearnPage extends StatelessWidget {
                               ),
                             ],
                           ),
-                          child: Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 10),
-                            child: Stack(
-                              children: [
-                                Positioned(
-                                  left: 10,
-                                  bottom: 35,
-                                  child: Container(
-                                    width: 100,
-                                    height: 100,
-                                    decoration: BoxDecoration(
-                                      image: DecorationImage(
-                                        fit: BoxFit.cover,
-                                        image: AssetImage(
-                                            "assets/images/learn4.png"),
+                          child: Container(
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                color: Color(0xFFEC6363)),
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 10),
+                              child: Stack(
+                                children: [
+                                  Positioned(
+                                    left: 10,
+                                    bottom: 10,
+                                    child: Container(
+                                      width: 100,
+                                      height: 100,
+                                      child: Image.asset(
+                                        "assets/images/module-scam.png",
                                       ),
                                     ),
                                   ),
-                                ),
-                                Positioned(
-                                  bottom: 0,
-                                  left: 0,
-                                  child: Container(
-                                    padding: EdgeInsets.all(5),
-                                    child: Text(
-                                      "Module 1 : Scam",
-                                      style: TextStyle(
-                                          color: Colors.black,
-                                          fontSize: 17,
-                                          fontWeight: FontWeight.bold),
+                                  Positioned(
+                                    top: 0,
+                                    right: 0,
+                                    child: Container(
+                                      padding: EdgeInsets.all(5),
+                                      child: Text(
+                                        "Module 1 : \nScam",
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 17,
+                                            fontWeight: FontWeight.bold),
+                                      ),
                                     ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
                         ),
                       ),
                     ),
                     ModuleLearnCard(
-                      title: "Module 2 : Investing",
+                      color: Color(0xFF359FDB),
+                      title: "Module 2 : \nInvesting",
                       imagePath: "assets/images/learn5.png",
                     ),
                     ModuleLearnCard(
-                      title: "Module 3",
+                      color: Colors.amber,
+                      title: "Module 3 : \nStocks",
                       imagePath: "assets/images/learn6.png",
                     )
                   ],

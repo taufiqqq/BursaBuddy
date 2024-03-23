@@ -4,9 +4,13 @@ import '../pages/beginner_page.dart';
 
 class ModuleLearnCard extends StatelessWidget {
   const ModuleLearnCard(
-      {super.key, required this.title, required this.imagePath});
+      {super.key,
+      required this.title,
+      required this.imagePath,
+      required this.color});
   final String title;
   final String imagePath;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -36,39 +40,38 @@ class ModuleLearnCard extends StatelessWidget {
               ),
             ],
           ),
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10),
-            child: Stack(
-              children: [
-                Positioned(
-                  left: 10,
-                  bottom: 35,
-                  child: Container(
-                    width: 100,
-                    height: 100,
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        fit: BoxFit.cover,
-                        image: AssetImage(imagePath),
+          child: Container(
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10), color: color),
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 10),
+              child: Stack(
+                children: [
+                  Positioned(
+                    left: 10,
+                    bottom: 10,
+                    child: Container(
+                      width: 100,
+                      height: 100,
+                      child: Image.asset(imagePath),
+                    ),
+                  ),
+                  Positioned(
+                    top: 0,
+                    right: 0,
+                    child: Container(
+                      padding: EdgeInsets.all(5),
+                      child: Text(
+                        title,
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 17,
+                            fontWeight: FontWeight.bold),
                       ),
                     ),
                   ),
-                ),
-                Positioned(
-                  bottom: 0,
-                  left: 0,
-                  child: Container(
-                    padding: EdgeInsets.all(5),
-                    child: Text(
-                      title,
-                      style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 17,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
