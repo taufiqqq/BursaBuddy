@@ -107,15 +107,16 @@ class MainLearnPage extends StatelessWidget {
             const Column(
               children: [
                 Padding(
-                  padding: EdgeInsets.only(top: 10, left: 20, right: 20),
+                  padding: EdgeInsets.only(top: 15, left: 20, right: 20),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
                         'Module',
                         style: TextStyle(
-                          fontSize: 17.0,
+                          fontSize: 23.0,
                           color: Colors.black,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                       Icon(
@@ -170,8 +171,8 @@ class MainLearnPage extends StatelessWidget {
                               child: Stack(
                                 children: [
                                   Positioned(
-                                    left: 10,
-                                    bottom: 10,
+                                    left: 5,
+                                    bottom: 5,
                                     child: Container(
                                       width: 100,
                                       height: 100,
@@ -225,8 +226,9 @@ class MainLearnPage extends StatelessWidget {
                       Text(
                         'Quiz',
                         style: TextStyle(
-                          fontSize: 17.0,
+                          fontSize: 23.0,
                           color: Colors.black,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                       Icon(
