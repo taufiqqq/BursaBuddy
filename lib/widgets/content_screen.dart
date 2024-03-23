@@ -47,7 +47,7 @@ class _ContentScreenState extends State<ContentScreen> {
     double myHeight = MediaQuery.of(context).size.height;
     double myWidth = MediaQuery.of(context).size.width;
     return Padding(
-      padding: const EdgeInsets.only(top: 40.0),
+      padding: const EdgeInsets.only(top: 45.0),
       child: Stack(
         fit: StackFit.expand,
         children: [

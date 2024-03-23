@@ -459,7 +459,11 @@ class _StockPageState extends State<StockPage> {
                 width: 50,
               ),
               onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: ((context) => ChatbotPage(messageText: widget.selectStock.name))));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: ((context) => ChatbotPage(
+                            messageText: widget.selectStock.name))));
               },
             ),
           ),
@@ -561,20 +565,32 @@ class _StockPageState extends State<StockPage> {
                 ),
                 Expanded(
                   flex: 1,
-                  child: Text('SELL',
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.red)),
+                  child: Container(
+                    padding: EdgeInsets.all(8),
+                    decoration: BoxDecoration(border: Border.all(), borderRadius: BorderRadius.circular(10), color: Colors.red),
+                    child: Text('SELL',
+                    textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.white)),
+                  ),
                 ),
+                SizedBox(width: 10),
                 Expanded(
                   flex: 1,
-                  child: Text('BUY',
-                      style: TextStyle(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.green)),
+                  child: Container(
+                    padding: EdgeInsets.all(8),
+                    decoration: BoxDecoration(border: Border.all(), borderRadius: BorderRadius.circular(10), color: Colors.green),
+                    child: Text('BUY',
+                    textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.white)),
+                  ),
                 ),
+                SizedBox(width: 20),
               ],
             ),
           ),

@@ -30,13 +30,13 @@ class HomeFYP extends StatelessWidget {
                 scrollDirection: Axis.vertical,
               ),
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.all(10.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     SizedBox(width: 24),
                     Text(
-                      'FOR YOU',
+                      'INVESTING FOR YOU',
                       style: TextStyle(
                         fontSize: 22,
                         fontWeight: FontWeight.w600,
