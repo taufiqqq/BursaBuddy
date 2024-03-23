@@ -208,7 +208,7 @@ class MainLearnPage extends StatelessWidget {
                     ),
                     ModuleLearnCard(
                       color: Colors.amber,
-                      title: "Module 3",
+                      title: "Module 3 : \nStocks",
                       imagePath: "assets/images/learn6.png",
                     )
                   ],
