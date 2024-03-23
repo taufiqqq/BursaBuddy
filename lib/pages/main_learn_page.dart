@@ -164,7 +164,7 @@ class MainLearnPage extends StatelessWidget {
                           child: Container(
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(10),
-                                color: Colors.blueAccent),
+                                color: Color(0xFFEC6363)),
                             child: Padding(
                               padding: EdgeInsets.symmetric(horizontal: 10),
                               child: Stack(
@@ -202,7 +202,7 @@ class MainLearnPage extends StatelessWidget {
                       ),
                     ),
                     ModuleLearnCard(
-                      color: Colors.greenAccent,
+                      color: Color(0xFF359FDB),
                       title: "Module 2 : \nInvesting",
                       imagePath: "assets/images/learn5.png",
                     ),
