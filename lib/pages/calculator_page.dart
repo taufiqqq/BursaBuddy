@@ -172,7 +172,6 @@ class _CalculatorPageState extends State<CalculatorPage> {
                     ),
                   ],
                 ),
-                //add a radio button besides the buying commission (%/RM)
                 NumericInputField(labelText: 'Net Selling Price (RM)', controller: NSPController),
                 SizedBox(height: 16),
                 Text(
@@ -202,7 +201,6 @@ class _CalculatorPageState extends State<CalculatorPage> {
                     ),
                   ],
                 ),
-                // The commented code from your previous build method goes here
               ],
             ),
           ),
@@ -272,43 +270,35 @@ class NumericInputField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      controller: controller,
-      keyboardType: TextInputType.numberWithOptions(decimal: true),
-      decoration: InputDecoration(labelText: labelText),
-    );
-  }
-}
-
-class OutputTextField extends StatelessWidget {
-  final String labelText;
-  final String value;
-
-  OutputTextField({required this.labelText, required this.value});
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Expanded(
-          child: Text(
-            labelText,
-            style: TextStyle(
-              fontSize: 16,
-            ),
+        Text(
+          labelText,
+          style: TextStyle(
+            fontSize: 16,
           ),
         ),
-        SizedBox(width: 8),
-        Expanded(
-          child: TextFormField(
-            initialValue: value,
-            readOnly: true,
-            style: TextStyle(fontSize: 16),
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              contentPadding: EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+        SizedBox(height: 8),
+        TextFormField(
+          controller: controller,
+          keyboardType: TextInputType.numberWithOptions(decimal: true),
+          decoration: InputDecoration(
+            border: OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.grey), // outer border color
+              borderRadius: BorderRadius.circular(8), // outer border radius
             ),
+            enabledBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.grey), // enabled border color
+              borderRadius: BorderRadius.circular(8), // enabled border radius
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderSide: BorderSide(color: Colors.purple),
+              borderRadius: BorderRadius.circular(8),
+            ),
+            contentPadding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+            filled: true,
+            fillColor: const Color.fromARGB(255, 218, 218, 218).withOpacity(0.5),
           ),
         ),
       ],
