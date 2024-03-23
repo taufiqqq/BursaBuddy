@@ -167,7 +167,7 @@ class MainLearnPage extends StatelessWidget {
                               children: [
                                 Positioned(
                                   left: 10,
-                                  bottom: 10,
+                                  bottom: 35,
                                   child: Container(
                                     width: 100,
                                     height: 100,
@@ -181,14 +181,16 @@ class MainLearnPage extends StatelessWidget {
                                   ),
                                 ),
                                 Positioned(
-                                  top: 5,
-                                  right: 5,
+                                  bottom: 0,
+                                  left: 0,
                                   child: Container(
                                     padding: EdgeInsets.all(5),
                                     child: Text(
                                       "Module 1 : Scam",
                                       style: TextStyle(
-                                          color: Colors.black, fontSize: 17),
+                                          color: Colors.black,
+                                          fontSize: 17,
+                                          fontWeight: FontWeight.bold),
                                     ),
                                   ),
                                 ),
