@@ -53,6 +53,7 @@ class _CalculatorPageState extends State<CalculatorPage> {
           // Title Container
           Container(
             alignment: Alignment.center,
+            padding: EdgeInsets.all(8),
             child: Text(
               "Investment Calculator",
               style: TextStyle(
@@ -64,8 +65,12 @@ class _CalculatorPageState extends State<CalculatorPage> {
           ),
           // Input And Output of Calculator Container
           Container(
-            color: Colors.white,
-            padding: EdgeInsets.all(16),
+            padding: EdgeInsets.all(20),
+            decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(40),
+                            topRight: Radius.circular(40),),
+                          color: Colors.white),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -182,7 +187,7 @@ class _CalculatorPageState extends State<CalculatorPage> {
                 Column(
                   children: [
                     NumericInputField(labelText: "Profit (RM)", controller: ProfitController),
-                    NumericInputField(labelText: "Return On Investment (ROI)", controller: ROIController),
+                    NumericInputField(labelText: "Return On Investment (ROI) (%)", controller: ROIController),
                     NumericInputField(labelText: "Break-even Selling Price (RM)", controller: Break_EvenController),
                   ],
                 ),
@@ -252,10 +257,9 @@ class _CalculatorPageState extends State<CalculatorPage> {
       SPController.clear();
       SCController.clear();
       NSPController.clear();
-
-      Profit = 0.0;
-      ROI = 0.0;
-      Break_Even = 0.0;
+      ProfitController.clear();
+      ROIController.clear();
+      Break_EvenController.clear();
     });
   }
 }
