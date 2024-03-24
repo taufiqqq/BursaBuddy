@@ -2,7 +2,7 @@
 
 ## Overview
 
-BursaBuddy+ is a mobile application built with flutter designed to provide users with a comprehensive platform for paper trading, learning trading skills, tracking their portfolio, and engaging in a community of traders. The application specifically caters to the Malaysian capital market, with a focus on Shariah-compliant stocks listed on Bursa Malaysia.
+BursaBuddy+ is a mobile application built with flutter designed to provide users with a comprehensive platform for paper trading, learning trading skills, tracking their portfolio, and engaging in a community of traders. The application specifically caters to the Malaysian capital market, with a focus on Shariah-compliant stocks listed on Bursa Malaysia. Check out our Flutter prototype [here](https://bursa-buddy-plus.vercel.app).
 
 ## Features
 
